@@ -3,19 +3,29 @@ import logo from "../assets/images/logo.svg";
 const Header = () => {
     return (
         <header>
-            <div className="app_header">
-                <div className="logo">
+            <div className="app_header flex flex-row p-10 justify-between">
+                <div className="logo flex flex-row items-center space-x-4">
                     <img src={logo} alt="App-logo" />
+                    <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
-                <div className="menu_and_user">
+                <div className="menu_and_user flex flex-row items-center">
                     <nav>
-                        <ul>
+                        <ul className="flex flex-row space-x-6">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
                             <li>
                                 <a href="/">Home</a>
                             </li>
                         </ul>
                     </nav>
-                    <div className="user"></div>
+                    <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20"></div>
                 </div>
             </div>
         </header>
