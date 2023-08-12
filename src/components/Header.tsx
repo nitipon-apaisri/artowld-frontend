@@ -1,6 +1,8 @@
 import logo from "../assets/images/logo.svg";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+    const { t } = useTranslation();
     return (
         <header>
             <div className="app_header flex flex-row p-10 justify-between">
@@ -12,16 +14,16 @@ const Header = () => {
                     <nav>
                         <ul className="flex flex-row space-x-6">
                             <li>
-                                <a href="/">Home</a>
+                                <a href="/">{t("Home")}</a>
                             </li>
                             <li>
-                                <a href="/">Home</a>
+                                <a href="/">{t("Explore")}</a>
                             </li>
                             <li>
-                                <a href="/">Home</a>
+                                <a href="/">{t("Stats")}</a>
                             </li>
                             <li>
-                                <a href="/">Home</a>
+                                <a href="/">{t("Resources")}</a>
                             </li>
                         </ul>
                     </nav>
