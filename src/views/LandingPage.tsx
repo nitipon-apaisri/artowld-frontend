@@ -9,6 +9,7 @@ const LandingPage = () => {
                     <section className="max-w-2xl">
                         <h1 className="text-4xl font-bold leading-normal antialiased max-w-xl">{t("slogan")}</h1>
                         <p className="font-normal text-sm antialiased text-[#8E8E8E]">{t("subSlogan")}</p>
+                        <button className="bg-primary text-white font-semibold antialiased leading-normal px-8 py-2 rounded-lg mt-8">{t("Explore")}</button>
                     </section>
                 </article>
             </div>
