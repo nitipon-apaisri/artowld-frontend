@@ -1,8 +1,11 @@
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
-
+import i18n from "../i18n";
 const Header = () => {
     const { t } = useTranslation();
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
     return (
         <header>
             <div className="app_header flex flex-row p-10 justify-between">
@@ -27,7 +30,7 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20"></div>
+                    <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20" onClick={() => changeLanguage("th")}></div>
                 </div>
             </div>
         </header>
