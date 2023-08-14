@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import CardOfDay from "../components/CardOfDay";
+import CardOfDay from "../components/CardOfTheDay";
 
 const LandingPage = () => {
     const { t } = useTranslation();
@@ -16,7 +16,7 @@ const LandingPage = () => {
                         <p className="font-normal text-sm antialiased text-[#8E8E8E]">{t("subSlogan")}</p>
                         <button className="bg-primary text-white font-semibold antialiased tracking-wide px-8 py-2 rounded-lg mt-8">{t("Explore")}</button>
                     </section>
-                    <section>
+                    <section className="relative">
                         <CardOfDay />
                     </section>
                 </article>
