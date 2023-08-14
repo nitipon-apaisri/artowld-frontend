@@ -6,7 +6,7 @@ const CardOfDay = () => {
                 <div className="w-11/12   bg-white rounded-2xl absolute left-2/4 -mr-[50%] -translate-x-1/2 bottom-6">
                     <div className="flex flex-row items-center justify-between p-6">
                         <div className="flex flex-row items-center">
-                            <div className="w-12 h-12 rounded-full bg-slate-500"></div>
+                            <div className="profile_image w-12 h-12  bg-slate-500"></div>
                             <div className="ml-4">
                                 <h5 className="font-bold tracking-wide antialiased">Lorem</h5>
                                 <p className="text-xs text-primary font-medium tracking-wider">Username</p>

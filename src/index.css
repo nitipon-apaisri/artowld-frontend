@@ -14,3 +14,18 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-bold tracking-wide antialiased;
+}
+
+.article_title {
+    @apply text-center;
+}
+.profile_image {
+    @apply rounded-full shadow-custom;
+}
