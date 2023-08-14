@@ -11,6 +11,7 @@ export default {
             },
             boxShadow: {
                 custom: "0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                custom2: "0px 20px 25px -5px rgba(0, 0, 0, 0.025), 0px 10px 10px -5px rgba(0, 0, 0, 0.02)",
             },
             translate: {
                 center: "-50%, -50%",
