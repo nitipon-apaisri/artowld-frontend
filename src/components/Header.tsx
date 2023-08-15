@@ -34,7 +34,7 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className="relative">
-                        <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20" onClick={toggle}></div>
+                        <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
                         {isToggle && <DropDown />}
                     </div>
                 </div>
