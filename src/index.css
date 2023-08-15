@@ -30,3 +30,7 @@ h6 {
 .profile_image {
     @apply rounded-full shadow-custom;
 }
+
+.menu_and_user nav ul li a {
+    @apply hover:bg-gray-100 px-4 py-2 duration-300 rounded-md;
+}

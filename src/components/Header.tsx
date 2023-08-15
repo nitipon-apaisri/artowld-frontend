@@ -15,7 +15,7 @@ const Header = () => {
                 </div>
                 <div className="menu_and_user flex flex-row items-center">
                     <nav>
-                        <ul className="flex flex-row space-x-6 font-bold tracking-wider">
+                        <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             <li>
                                 <a href="/">{t("Home")}</a>
                             </li>
