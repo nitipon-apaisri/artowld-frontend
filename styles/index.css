@@ -598,6 +598,14 @@ video {
   margin-top: 2rem;
 }
 
+.mt-20{
+  margin-top: 5rem;
+}
+
+.mt-40{
+  margin-top: 10rem;
+}
+
 .flex{
   display: flex;
 }
@@ -770,6 +778,11 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FAFAFA\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\.\.\/src\/assets\/images\/test\.jpg\)\]{
