@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import CardOfTheDay from "../components/CardOfTheDay";
-import TrendingCreators from "../components/trendingCreators";
+import TrendingCreators from "../components/TrendingCreators";
 import TopCreators from "../components/TopCreators";
+import RisingStars from "../components/RisingStar";
 
 const LandingPage = () => {
     const { t } = useTranslation();
@@ -36,7 +37,9 @@ const LandingPage = () => {
                 </article>
                 <article className="mt-24">
                     <h1 className="article_title">{t("risingStars")}</h1>
-                    <section></section>
+                    <section>
+                        <RisingStars />
+                    </section>
                 </article>
             </div>
         </main>

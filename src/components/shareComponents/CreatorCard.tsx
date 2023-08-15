@@ -1,5 +1,5 @@
 import React from "react";
-import { creatorCardProps } from "../types/types";
+import { creatorCardProps } from "../../types/types";
 
 const CreatorCard: React.FC<creatorCardProps> = ({ username }) => {
     return (
