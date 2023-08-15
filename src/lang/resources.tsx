@@ -10,6 +10,7 @@ const resources = {
             title: "ARTOWLD - Discover, Collect, and Sell extraordinary arts.",
             trendingCreators: "Trending Creators",
             topCreators: "Top Creators",
+            risingStars: "Rising Stars",
         },
     },
     th: {
@@ -23,6 +24,7 @@ const resources = {
             title: "ARTOWLD - ค้นพบ สะสม และขายศิลปะที่น่าทึ่งจากทั่วโลก",
             trendingCreators: "นักสร้างสรรค์ที่ได้รับความนิยม",
             topCreators: "นักสร้างสรรค์ยอดนิยม",
+            risingStars: "นักวาดหน้าใหม่",
         },
     },
 };

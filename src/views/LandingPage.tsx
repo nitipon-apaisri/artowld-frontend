@@ -22,17 +22,21 @@ const LandingPage = () => {
                         <CardOfTheDay />
                     </section>
                 </article>
-                <article className="mt-20">
-                    <h1 className=" text-2xl text-center">{t("trendingCreators")}</h1>
+                <article className="mt-24">
+                    <h1 className="article_title">{t("trendingCreators")}</h1>
                     <section>
                         <TrendingCreators />
                     </section>
                 </article>
-                <article className="mt-20">
-                    <h1 className=" text-2xl text-center">{t("topCreators")}</h1>
+                <article className="mt-24">
+                    <h1 className="article_title">{t("topCreators")}</h1>
                     <section>
                         <TopCreators />
                     </section>
+                </article>
+                <article className="mt-24">
+                    <h1 className="article_title">{t("risingStars")}</h1>
+                    <section></section>
                 </article>
             </div>
         </main>

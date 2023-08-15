@@ -25,7 +25,7 @@ h6 {
 }
 
 .article_title {
-    @apply text-center;
+    @apply text-center text-3xl;
 }
 .profile_image {
     @apply rounded-full shadow-custom;
