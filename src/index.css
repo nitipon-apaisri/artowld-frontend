@@ -34,3 +34,13 @@ h6 {
 .menu_and_user nav ul li a {
     @apply hover:bg-gray-100 px-4 py-2 duration-300 rounded-md;
 }
+.dropdown {
+    @apply absolute right-0 mt-4 bg-white divide-y divide-gray-100 rounded-lg shadow-custom2 w-44 border border-slate-100;
+}
+.dropdown ul {
+    @apply py-2 text-base text-black;
+}
+.dropdown ul li a,
+button {
+    @apply block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-100 duration-300 cursor-pointer;
+}

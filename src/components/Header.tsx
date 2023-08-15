@@ -1,10 +1,13 @@
+import { useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import DropDown from "./shareComponents/DropDown";
 const Header = () => {
     const { t } = useTranslation();
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
+    const [isToggle, setIsToggle] = useState<boolean>(false);
+
+    const toggle = () => {
+        setIsToggle(!isToggle);
     };
     return (
         <header>
@@ -30,7 +33,10 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20" onClick={() => changeLanguage("th")}></div>
+                    <div className="relative">
+                        <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20" onClick={toggle}></div>
+                        {isToggle && <DropDown />}
+                    </div>
                 </div>
             </div>
         </header>
