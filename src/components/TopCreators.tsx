@@ -13,8 +13,8 @@ const TopCreators = () => {
                                 <div className="profile_image w-16 h-16 bg-slate-500 ml-6"></div>
 
                                 <div className="ml-4">
-                                    <h5>Lorem Ipsum</h5>
-                                    <p className="font-semibold text-sm antialiased text-[#AEAEAE]">Total sales: {creator.totalSales}</p>
+                                    <h5 className="text-sm xl:text-base">Lorem Ipsum</h5>
+                                    <p className="font-medium text-xs xl:font-semibold xl:text-sm antialiased text-[#AEAEAE]">Total sales: {creator.totalSales}</p>
                                 </div>
                             </div>
                         </div>
