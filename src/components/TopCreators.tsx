@@ -3,7 +3,7 @@ import { sampleCreators } from "../data/sample";
 const TopCreators = () => {
     return (
         <div className="mt-10 max-h-[560px] overflow-y-scroll">
-            <div className="grid grid-rows-3 grid-flow-row min-w-[959px]:grid-flow-col gap-8">
+            <div className="grid grid-rows-3 grid-flow-row min-[959px]:grid-flow-col gap-8">
                 {sampleCreators
                     .sort((a, b) => (a.totalSales < b.totalSales ? 1 : -1))
                     .map((creator, i) => (

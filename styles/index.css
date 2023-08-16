@@ -896,6 +896,16 @@ video {
   line-height: 1rem;
 }
 
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -1244,6 +1254,10 @@ button:hover{
 
   .min-\[959px\]\:w-full{
     width: 100%;
+  }
+
+  .min-\[959px\]\:grid-flow-col{
+    grid-auto-flow: column;
   }
 }
 
