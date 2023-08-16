@@ -556,6 +556,10 @@ video {
   top: 45%;
 }
 
+.bottom-4{
+  bottom: 1rem;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -638,6 +642,10 @@ video {
   height: 60%;
 }
 
+.h-\[400px\]{
+  height: 400px;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -668,6 +676,18 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-\[400\]{
+  width: 400;
+}
+
+.w-\[400px\]{
+  width: 400px;
+}
+
+.w-10\/12{
+  width: 83.333333%;
 }
 
 .max-w-2xl{
@@ -807,6 +827,10 @@ video {
 
 .p-6{
   padding: 1.5rem;
+}
+
+.p-4{
+  padding: 1rem;
 }
 
 .px-20{
@@ -1052,8 +1076,28 @@ button:hover{
 }
 
 @media (min-width: 1536px){
+  .\32xl\:bottom-6{
+    bottom: 1.5rem;
+  }
+
+  .\32xl\:h-\[480px\]{
+    height: 480px;
+  }
+
+  .\32xl\:w-\[480px\]{
+    width: 480px;
+  }
+
+  .\32xl\:w-11\/12{
+    width: 91.666667%;
+  }
+
   .\32xl\:max-w-xl{
     max-width: 36rem;
+  }
+
+  .\32xl\:p-6{
+    padding: 1.5rem;
   }
 
   .\32xl\:text-4xl{
