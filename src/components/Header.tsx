@@ -4,17 +4,20 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import DropDown from "./shareComponents/DropDown";
-const Header = () => {
+import { headerProps } from "../types/types";
+const Header = (toggleSidebar: headerProps) => {
     const { t } = useTranslation();
     const [isToggle, setIsToggle] = useState<boolean>(false);
 
     const toggle = () => {
         setIsToggle(!isToggle);
     };
+
     return (
         <header>
             <div className="app_header flex flex-row p-10 justify-between">
                 <div className="logo flex flex-row items-center space-x-4">
+                    <FontAwesomeIcon icon={faBars} className="block md:hidden  cursor-pointer" size="2xl" onClick={() => toggleSidebar.toggleSidebar()} />
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
@@ -36,7 +39,6 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className="relative">
-                        <FontAwesomeIcon icon={faBars} className="block md:hidden ml-20 cursor-pointer" size="2xl" />
                         <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
                         {isToggle && <DropDown />}
                     </div>
