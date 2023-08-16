@@ -1,6 +1,8 @@
 import { useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import DropDown from "./shareComponents/DropDown";
 const Header = () => {
     const { t } = useTranslation();
@@ -17,7 +19,7 @@ const Header = () => {
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center">
-                    <nav>
+                    <nav className="max-md:hidden">
                         <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             <li>
                                 <a href="/">{t("Home")}</a>
@@ -34,7 +36,8 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className="relative">
-                        <div className="user bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
+                        <FontAwesomeIcon icon={faBars} className="block md:hidden ml-20 cursor-pointer" size="2xl" />
+                        <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
                         {isToggle && <DropDown />}
                     </div>
                 </div>

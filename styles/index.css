@@ -606,12 +606,20 @@ video {
   margin-top: 2rem;
 }
 
+.block{
+  display: block;
+}
+
 .flex{
   display: flex;
 }
 
 .grid{
   display: grid;
+}
+
+.hidden{
+  display: none;
 }
 
 .aspect-square{
@@ -1162,7 +1170,21 @@ button:hover{
   }
 }
 
+@media not all and (min-width: 768px){
+  .max-md\:hidden{
+    display: none;
+  }
+}
+
 @media not all and (min-width: 640px){
+  .max-sm-\[640px\]\:hidden{
+    display: none;
+  }
+
+  .max-sm\:hidden{
+    display: none;
+  }
+
   .max-sm\:w-full{
     width: 100%;
   }
@@ -1197,6 +1219,10 @@ button:hover{
 }
 
 @media (max-width: 640px){
+  .max-\[640px\]\:hidden{
+    display: none;
+  }
+
   .max-\[640px\]\:flex-row{
     flex-direction: row;
   }
@@ -1211,8 +1237,16 @@ button:hover{
     margin-top: 2.5rem;
   }
 
+  .sm\:block{
+    display: block;
+  }
+
   .sm\:flex{
     display: flex;
+  }
+
+  .sm\:hidden{
+    display: none;
   }
 
   .sm\:w-4\/5{
@@ -1244,6 +1278,16 @@ button:hover{
   .sm\:text-5xl{
     font-size: 3rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 768px){
+  .md\:block{
+    display: block;
+  }
+
+  .md\:hidden{
+    display: none;
   }
 }
 
@@ -1279,6 +1323,14 @@ button:hover{
 
   .lg\:mt-0{
     margin-top: 0px;
+  }
+
+  .lg\:block{
+    display: block;
+  }
+
+  .lg\:hidden{
+    display: none;
   }
 
   .lg\:h-12{
