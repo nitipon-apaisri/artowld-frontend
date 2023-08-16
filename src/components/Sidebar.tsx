@@ -1,8 +1,8 @@
 const Sidebar = () => {
     return (
-        <div className="absolute w-80 z-50 py-2 px-10">
+        <aside className=" w-full z-[9999]  border-t py-6 px-10 shadow-custom2">
             <h1>sidebar</h1>
-        </div>
+        </aside>
     );
 };
 
