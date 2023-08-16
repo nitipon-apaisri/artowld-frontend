@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +8,19 @@ const Header = () => {
     const { t } = useTranslation();
     const [isToggle, setIsToggle] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
+    const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const toggle = () => {
         setIsToggle(!isToggle);
     };
 
+    useEffect(() => {
+        const updateSize = () => {
+            setInnerWidth(window.innerWidth);
+            if (innerWidth > 768) setIsSidebarToggle(false);
+        };
+        window.addEventListener("resize", updateSize);
+        updateSize();
+    }, [isSidebarToggle, innerWidth]);
     return (
         <header>
             <div className="app_header flex flex-row px-10 py-8 justify-between bg-white">

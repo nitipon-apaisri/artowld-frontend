@@ -931,6 +931,10 @@ video {
   cursor: pointer;
 }
 
+.resize{
+  resize: both;
+}
+
 .grid-flow-row{
   grid-auto-flow: row;
 }
