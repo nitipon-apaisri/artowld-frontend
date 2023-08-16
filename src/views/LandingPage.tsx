@@ -13,13 +13,13 @@ const LandingPage = () => {
     return (
         <main className="my-10">
             <div className="wrapper max-w-[1920px] min-h-screen mx-auto px-20">
-                <article className="flex flex-row justify-between items-center">
-                    <section className="max-w-2xl">
-                        <h1 className="text-3xl  2xl:text-4xl 2xl:max-w-xl max-w-lg ">{t("slogan")}</h1>
-                        <p className="font-normal text-sm antialiased text-[#8E8E8E]">{t("subSlogan")}</p>
-                        <button className="bg-primary text-white font-semibold antialiased tracking-wide px-8 py-2 rounded-lg mt-8">{t("Explore")}</button>
+                <article className="flex max-[864px]:flex-col flex-row justify-between items-center">
+                    <section className="w-full 2xl:max-w-2xl max-[864px]:text-center lg:text-left">
+                        <h1 className="  sm:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl w-full lg:max-w-lg 2xl:max-w-xl  ">{t("slogan")}</h1>
+                        <p className="font-normal text-sm antialiased text-[#8E8E8E] mt-4 lg:mt-0">{t("subSlogan")}</p>
+                        <button className="bg-primary text-white font-semibold antialiased tracking-wide px-8 py-2 rounded-lg mt-8 mx-auto lg:mx-0">{t("Explore")}</button>
                     </section>
-                    <section className="relative">
+                    <section className="relative sm:mt-10">
                         <CardOfTheDay />
                     </section>
                 </article>

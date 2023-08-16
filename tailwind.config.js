@@ -16,6 +16,9 @@ export default {
             translate: {
                 center: "-50%, -50%",
             },
+            fontSize: {
+                "2xs": ".65rem",
+            },
         },
     },
     plugins: [],
