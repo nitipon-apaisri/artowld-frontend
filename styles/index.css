@@ -648,6 +648,34 @@ video {
   top: 100px;
 }
 
+.bottom-0{
+  bottom: 0px;
+}
+
+.top-\[50\%\]{
+  top: 50%;
+}
+
+.top-\[100\%\]{
+  top: 100%;
+}
+
+.top-\[90\%\]{
+  top: 90%;
+}
+
+.top-\[calc\(100\%-50px\)\]{
+  top: calc(100% - 50px);
+}
+
+.top-\[calc\(100\%-100px\)\]{
+  top: calc(100% - 100px);
+}
+
+.top-\[calc\(100\%-160px\)\]{
+  top: calc(100% - 160px);
+}
+
 .z-\[9999\]{
   z-index: 9999;
 }
@@ -730,6 +758,10 @@ video {
 
 .z-auto{
   z-index: auto;
+}
+
+.z-\[0\]{
+  z-index: 0;
 }
 
 .mx-auto{
@@ -842,6 +874,11 @@ video {
 
 .h-screen{
   height: 100vh;
+}
+
+.h-fit{
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .max-h-\[560px\]{
@@ -988,6 +1025,16 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.-translate-y-0{
+  --tw-translate-y: -0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-x-3\/4{
+  --tw-translate-x: -75%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -1008,6 +1055,10 @@ video {
   flex-direction: row;
 }
 
+.flex-col{
+  flex-direction: column;
+}
+
 .flex-wrap{
   flex-wrap: wrap;
 }
@@ -1022,6 +1073,10 @@ video {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.justify-evenly{
+  justify-content: space-evenly;
 }
 
 .gap-6{
@@ -1042,6 +1097,12 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]){
@@ -1170,6 +1231,11 @@ video {
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-6{
