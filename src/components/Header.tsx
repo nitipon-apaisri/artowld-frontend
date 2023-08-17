@@ -9,6 +9,7 @@ const Header = () => {
     const [isToggle, setIsToggle] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+
     const toggle = () => {
         setIsToggle(!isToggle);
     };
@@ -21,9 +22,10 @@ const Header = () => {
         window.addEventListener("resize", updateSize);
         updateSize();
     }, [isSidebarToggle, innerWidth]);
+
     return (
         <header>
-            <div className="app_header flex flex-row px-10 py-8 justify-between bg-white">
+            <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
                 <div className="logo flex flex-row items-center space-x-4">
                     <FontAwesomeIcon icon={faBars} className="block md:hidden  cursor-pointer" size="2xl" onClick={() => setIsSidebarToggle(!isSidebarToggle)} />
                     <img src={logo} alt="App-logo" />
@@ -48,14 +50,12 @@ const Header = () => {
                     </nav>
 
                     <aside
-                        className={`absolute  ${isSidebarToggle ? "z-[999]" : "-z-[50]"} right-0 ${
-                            isSidebarToggle ? "translate-y-[80px]" : "translate-y-0"
-                        }  bg-white py-6 px-10 w-full border-t shadow-custom2 transition-all duration-500 ease-in-out`}
+                        className={`fixed  h-screen ${isSidebarToggle ? " z-[999]" : "-z-[50]"} right-0 ${
+                            isSidebarToggle ? "translate-x-0" : "-translate-x-full"
+                        }  bg-white py-6 px-10 w-full border-t shadow-custom2 transition-all top-[100px] duration-500 ease-in-out`}
                     >
                         <h1>sidebar</h1>
                     </aside>
-                    {/* {isSidebarToggle && (
-                    )} */}
                     <div className="relative">
                         <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
                         {isToggle && <DropDown />}

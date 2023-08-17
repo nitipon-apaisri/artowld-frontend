@@ -7,11 +7,13 @@ import RisingStars from "../components/RisingStar";
 
 const LandingPage = () => {
     const { t } = useTranslation();
+
     useEffect(() => {
         document.title = t("title");
     }, [t]);
+
     return (
-        <main className="my-10">
+        <main className="mt-32">
             <div className="wrapper max-w-[1920px] min-h-screen mx-auto px-20">
                 <article className="flex max-[959px]:flex-col flex-row justify-between items-center">
                     <section className="w-full 2xl:max-w-2xl max-[959px]:text-center lg:text-left">
