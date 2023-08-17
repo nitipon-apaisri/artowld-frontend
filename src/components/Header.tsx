@@ -31,7 +31,7 @@ const Header = () => {
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
                 <div className="logo flex flex-row items-center space-x-4">
-                    <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className="block md:hidden  cursor-pointer" size="2xl" onClick={() => toggleSidebar()} />
+                    <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className="block md:hidden  cursor-pointer min-w-[40px]" size="2xl" onClick={() => toggleSidebar()} />
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
