@@ -1,7 +1,7 @@
 // import img from "../assets/images/test.jpg";
 const CardOfDay = () => {
     return (
-        <div className="w-80 max-[959px]:w-[400px] aspect-square  lg:w-[400px]  2xl:w-[480px]  rounded-2xl shadow-custom">
+        <div className="max-[480px]:w-80 w-[400px] aspect-square  lg:w-[400px]  2xl:w-[480px]  rounded-2xl shadow-custom">
             <div className="w-full aspect-square bg-slate-500 rounded-2xl">
                 <div className="w-11/12 bg-white rounded-2xl absolute left-2/4 -mr-[50%] -translate-x-1/2 2xl:bottom-6 bottom-4">
                     <div className="flex flex-row items-center justify-between 2xl:p-6 p-4">
