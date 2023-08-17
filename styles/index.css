@@ -885,8 +885,16 @@ video {
   max-height: 560px;
 }
 
+.max-h-10{
+  max-height: 2.5rem;
+}
+
 .min-h-screen{
   min-height: 100vh;
+}
+
+.min-h-\[40px\]{
+  min-height: 40px;
 }
 
 .w-10{
@@ -1547,12 +1555,20 @@ button:hover{
 }
 
 @media (min-width: 768px){
+  .md\:mt-0{
+    margin-top: 0px;
+  }
+
   .md\:block{
     display: block;
   }
 
   .md\:hidden{
     display: none;
+  }
+
+  .md\:flex-row{
+    flex-direction: row;
   }
 }
 
