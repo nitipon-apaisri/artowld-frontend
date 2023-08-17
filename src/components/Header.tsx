@@ -9,7 +9,16 @@ const Header = () => {
     const [isToggle, setIsToggle] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+    const [currentLanguage, setCurrentLanguage] = useState<string>("en");
+    const [showLanguages, setShowLanguages] = useState<boolean>(false);
+    const { i18n } = useTranslation();
 
+    const changeLanguage = (lang: string) => {
+        const currentLanguage = i18n.language;
+        setCurrentLanguage(currentLanguage);
+        i18n.changeLanguage(lang);
+        setShowLanguages(false);
+    };
     const toggle = () => {
         setIsToggle(!isToggle);
     };
@@ -18,10 +27,14 @@ const Header = () => {
         document.body.style.overflow = "hidden";
         if (isSidebarToggle) document.body.style.overflow = "auto";
     };
+
     useEffect(() => {
         const updateSize = () => {
             setInnerWidth(window.innerWidth);
-            if (innerWidth > 768) setIsSidebarToggle(false);
+            if (innerWidth > 768) {
+                setIsSidebarToggle(false);
+                setShowLanguages(false);
+            }
         };
         window.addEventListener("resize", updateSize);
         updateSize();
@@ -81,7 +94,29 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <button className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-160px)] bg-primary text-white font-semibold antialiased tracking-wide px-8 py-2 rounded-lg">
+                    <hr className="mt-4" />
+                    <div className="flex flex-row items-center space-x-4">
+                        <div className="user block bg-slate-500 rounded-full w-10 h-10  cursor-pointer my-4 shadow-custom2"></div>
+                        <h5 className="font-semibold">Lorem Ipsun</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <p className="mt-4" onClick={() => setShowLanguages(!showLanguages)}>
+                            Switch language : <b>{currentLanguage}</b>
+                        </p>
+                        <div className={`${showLanguages ? "block" : "hidden"}`}>
+                            <hr className="mt-4" />
+                            <ul className="flex flex-col space-y-6 font-medium tracking-wider py-4 ">
+                                <li>
+                                    <h5 onClick={() => changeLanguage("en")}>EN</h5>
+                                </li>
+                                <li>
+                                    <h5 onClick={() => changeLanguage("th")}>TH</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-160px)] bg-primary text-white font-semibold antialiased tracking-wide px-8 py-4 rounded-lg">
                         Sign in
                     </button>
                 </div>
