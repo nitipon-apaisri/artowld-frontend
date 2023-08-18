@@ -24,6 +24,13 @@ h6 {
     @apply font-bold tracking-wide antialiased;
 }
 
+.hide_scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide_scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 .article_title {
     @apply text-center text-3xl;
 }

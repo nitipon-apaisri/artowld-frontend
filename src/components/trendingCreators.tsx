@@ -3,7 +3,7 @@ import CreatorCard from "./shareComponents/CreatorCard";
 
 const TrendingCreators = () => {
     return (
-        <div className="flex flex-wrap justify-center items-center max-h-[560px] overflow-y-scroll min-[960px]:grid min-[960px]:grid-cols-3 gap-6 mt-10">
+        <div className="w-full grid grid-flow-col overflow-auto gap-6 hide_scrollbar mt-10">
             {sampleCreators
                 .filter((_, index) => index < 3)
                 .map((creator, i) => (

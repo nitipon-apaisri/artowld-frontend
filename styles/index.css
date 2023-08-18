@@ -706,6 +706,10 @@ video {
   width: 50%;
 }
 
+.w-80{
+  width: 20rem;
+}
+
 .w-\[400px\]{
   width: 400px;
 }
@@ -714,8 +718,20 @@ video {
   width: 100%;
 }
 
-.w-80{
-  width: 20rem;
+.w-60{
+  width: 15rem;
+}
+
+.w-72{
+  width: 18rem;
+}
+
+.w-\[480px\]{
+  width: 480px;
+}
+
+.w-\[280px\]{
+  width: 280px;
 }
 
 .min-w-\[40px\]{
@@ -766,6 +782,10 @@ video {
 
 .grid-flow-row{
   grid-auto-flow: row;
+}
+
+.grid-flow-col{
+  grid-auto-flow: column;
 }
 
 .grid-rows-3{
@@ -820,6 +840,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.overflow-auto{
+  overflow: auto;
 }
 
 .overflow-y-scroll{
@@ -937,6 +961,31 @@ video {
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-0{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-14{
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.px-12{
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .pb-6{
@@ -1097,6 +1146,15 @@ h6{
   -moz-osx-font-smoothing: grayscale;
 }
 
+.hide_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide_scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .article_title{
   text-align: center;
   font-size: 1.875rem;
@@ -1216,20 +1274,8 @@ button:hover{
 }
 
 @media not all and (min-width: 640px){
-  .max-sm\:w-32{
-    width: 8rem;
-  }
-
-  .max-sm\:w-\[400px\]{
-    width: 400px;
-  }
-
   .max-sm\:w-24{
     width: 6rem;
-  }
-
-  .max-sm\:w-20{
-    width: 5rem;
   }
 }
 
@@ -1240,30 +1286,38 @@ button:hover{
 }
 
 @media (max-width: 425px){
-  .max-\[425px\]\:w-80{
-    width: 20rem;
+  .max-\[425px\]\:px-20{
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media (min-width: 424px){
+  .min-\[424px\]\:px-20{
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media (min-width: 425px){
+  .min-\[425px\]\:px-20{
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
 @media (min-width: 640px){
-  .sm\:w-4\/5{
-    width: 80%;
+  .sm\:w-11\/12{
+    width: 91.666667%;
   }
 
   .sm\:w-\[400px\]{
     width: 400px;
   }
 
-  .sm\:w-3\/4{
-    width: 75%;
-  }
-
-  .sm\:w-10\/12{
-    width: 83.333333%;
-  }
-
-  .sm\:w-11\/12{
-    width: 91.666667%;
+  .sm\:px-20{
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .sm\:text-4xl{
