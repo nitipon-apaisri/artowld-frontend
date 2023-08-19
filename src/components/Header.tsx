@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import DropDown from "./shareComponents/DropDown";
+import { UserContext } from "../contexts/UserContext";
+import { UserContextType } from "../types/types";
+import SignInButton from "./shareComponents/SignInButton";
 const Header = () => {
     const { t } = useTranslation();
+    const { token } = useContext(UserContext) as UserContextType;
     const [isToggle, setIsToggle] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
@@ -49,7 +53,7 @@ const Header = () => {
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center ">
-                    <nav className="max-md:hidden">
+                    <nav className="max-md:hidden max-md:mr-4">
                         <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             <li>
                                 <a href="/">{t("Home")}</a>
@@ -65,11 +69,14 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-
-                    <div className="relative">
-                        <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
-                        {isToggle && <DropDown />}
-                    </div>
+                    {token !== null ? (
+                        <div className="relative">
+                            <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
+                            {isToggle && <DropDown />}
+                        </div>
+                    ) : (
+                        <>{innerWidth > 768 && <SignInButton />}</>
+                    )}
                 </div>
             </div>
             <aside
@@ -116,9 +123,9 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                    <button className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-160px)] bg-primary text-white font-semibold antialiased tracking-wide px-8 py-4 rounded-lg">
-                        Sign in
-                    </button>
+                    <div className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-160px)]">
+                        <SignInButton width="w-full" />
+                    </div>
                 </div>
             </aside>
         </header>

@@ -646,6 +646,10 @@ video {
   margin-top: 2rem;
 }
 
+.mr-4{
+  margin-right: 1rem;
+}
+
 .block{
   display: block;
 }
@@ -988,6 +992,11 @@ video {
   padding-right: 3rem;
 }
 
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .pb-6{
   padding-bottom: 1.5rem;
 }
@@ -1268,6 +1277,10 @@ button:hover{
 }
 
 @media not all and (min-width: 768px){
+  .max-md\:mr-4{
+    margin-right: 1rem;
+  }
+
   .max-md\:hidden{
     display: none;
   }
