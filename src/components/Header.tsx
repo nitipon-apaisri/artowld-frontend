@@ -53,7 +53,7 @@ const Header = () => {
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center ">
-                    <nav className="max-md:hidden max-md:mr-4">
+                    <nav className="max-md:hidden md:mr-4">
                         <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             <li>
                                 <a href="/">{t("Home")}</a>
