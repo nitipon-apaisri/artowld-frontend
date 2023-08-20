@@ -11,6 +11,8 @@ const resources = {
             trendingCreators: "Trending Creators",
             topCreators: "Top Creators",
             risingStars: "Rising Stars",
+            signIn: "Sign In",
+            signOut: "Sign Out",
         },
     },
     th: {
@@ -25,6 +27,8 @@ const resources = {
             trendingCreators: "นักสร้างสรรค์ที่ได้รับความนิยม",
             topCreators: "นักสร้างสรรค์ยอดนิยม",
             risingStars: "นักวาดหน้าใหม่",
+            signIn: "เข้าสู่ระบบ",
+            signOut: "ออกจากระบบ",
         },
     },
 };

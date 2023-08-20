@@ -1,7 +1,7 @@
 // import { dropdownProps } from "../../types/types";
 
 import { useTranslation } from "react-i18next";
-const DropDown = () => {
+const UserDropDown = () => {
     const { i18n } = useTranslation();
     const changeLanguage = () => {
         const currentLanguage = i18n.language;
@@ -9,7 +9,7 @@ const DropDown = () => {
         i18n.changeLanguage(lng);
     };
     return (
-        <div className="dropdown">
+        <div className="dropdown w-44">
             <ul className="py-2 text-s text-black" aria-labelledby="dropdownDefaultButton">
                 <li>
                     <a href="#">Dashboard</a>
@@ -28,4 +28,4 @@ const DropDown = () => {
     );
 };
 
-export default DropDown;
+export default UserDropDown;

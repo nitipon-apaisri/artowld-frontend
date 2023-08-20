@@ -706,6 +706,14 @@ video {
   width: 50%;
 }
 
+.w-32{
+  width: 8rem;
+}
+
+.w-44{
+  width: 11rem;
+}
+
 .w-\[280px\]{
   width: 280px;
 }
@@ -800,6 +808,12 @@ video {
   gap: 2rem;
 }
 
+.space-x-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -816,6 +830,17 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
+.divide-gray-100 > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-divide-opacity));
 }
 
 .overflow-auto{
@@ -1024,6 +1049,11 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .text-primary{
   --tw-text-opacity: 1;
   color: rgb(6 82 221 / var(--tw-text-opacity));
@@ -1148,18 +1178,6 @@ h6{
   right: 0px;
   z-index: 50;
   margin-top: 1rem;
-  width: 11rem;
-}
-
-.dropdown > :not([hidden]) ~ :not([hidden]){
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-  --tw-divide-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-divide-opacity));
-}
-
-.dropdown{
   border-radius: 0.5rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -1172,8 +1190,6 @@ h6{
 }
 
 .dropdown ul{
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
@@ -1181,25 +1197,28 @@ h6{
 }
 
 .dropdown ul li a,
-button{
+button,
+b{
   display: block;
   cursor: pointer;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   transition-duration: 300ms;
 }
 
 .dropdown ul li a:hover,
-button:hover{
+button:hover,
+b:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 @media (prefers-color-scheme: dark){
   .dropdown ul li a:hover,
-button:hover{
+button:hover,
+b:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   }
@@ -1211,11 +1230,13 @@ button:hover{
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-@media (max-width: 959px){
-  .max-\[959px\]\:flex-col{
+@media not all and (min-width: 1024px){
+  .max-lg\:flex-col{
     flex-direction: column;
   }
+}
 
+@media (max-width: 959px){
   .max-\[959px\]\:text-center{
     text-align: center;
   }

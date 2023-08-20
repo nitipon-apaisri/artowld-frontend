@@ -2,34 +2,40 @@ import { useContext, useEffect, useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import DropDown from "./shareComponents/DropDown";
+import { faBars, faXmark, faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../contexts/UserContext";
 import { UserContextType } from "../types/types";
 import SignInButton from "./shareComponents/SignInButton";
+import UserDropDown from "./shareComponents/UserDropDown";
+import LanguageDropdown from "./shareComponents/LanguageDropdown";
 const Header = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { token } = useContext(UserContext) as UserContextType;
-    const [isToggle, setIsToggle] = useState<boolean>(false);
+    const [userDropdown, setUserDropdown] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [currentLanguage, setCurrentLanguage] = useState<string>("en");
     const [showLanguages, setShowLanguages] = useState<boolean>(false);
-    const { i18n } = useTranslation();
-
+    const [languageDropdown, setLanguageDropdown] = useState<boolean>(false);
     const changeLanguage = (lang: string) => {
-        const currentLanguage = i18n.language;
-        setCurrentLanguage(currentLanguage);
+        localStorage.setItem("lang", lang);
         i18n.changeLanguage(lang);
         setShowLanguages(false);
+
+        window.location.reload();
     };
-    const toggle = () => {
-        setIsToggle(!isToggle);
+    const toggleUserDropdown = () => {
+        setUserDropdown(!toggleUserDropdown);
     };
     const toggleSidebar = () => {
         setIsSidebarToggle(!isSidebarToggle);
         document.body.style.overflow = "hidden";
         if (isSidebarToggle) document.body.style.overflow = "auto";
+    };
+
+    const toggleLanguageDropdown = () => {
+        setUserDropdown(false);
+        setLanguageDropdown(!languageDropdown);
     };
 
     useEffect(() => {
@@ -38,12 +44,20 @@ const Header = () => {
             if (innerWidth > 768) {
                 setIsSidebarToggle(false);
                 setShowLanguages(false);
+                setLanguageDropdown(false);
             }
         };
         window.addEventListener("resize", updateSize);
         updateSize();
     }, [isSidebarToggle, innerWidth]);
 
+    useEffect(() => {
+        const lang = localStorage.getItem("lang");
+        if (lang) {
+            setCurrentLanguage(lang);
+            i18n.changeLanguage(lang);
+        }
+    }, [i18n]);
     return (
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
@@ -71,11 +85,31 @@ const Header = () => {
                     </nav>
                     {token !== null ? (
                         <div className="relative">
-                            <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggle}></div>
-                            {isToggle && <DropDown />}
+                            <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggleUserDropdown}></div>
+                            {userDropdown && <UserDropDown />}
                         </div>
                     ) : (
-                        <>{innerWidth > 768 && <SignInButton />}</>
+                        <>
+                            {innerWidth > 768 && (
+                                <div className="flex flex-row items-center space-x-4">
+                                    <div className="relative">
+                                        <FontAwesomeIcon icon={faLanguage} size="xl" onClick={toggleLanguageDropdown} />
+                                        {languageDropdown && <LanguageDropdown />}
+                                    </div>
+                                    {/* <div className="flex flex-row items-center space-x-1">
+                                        <b className={currentLanguage === "en" ? "text-black" : "text-gray-500"} onClick={() => changeLanguage("en")}>
+                                            EN
+                                        </b>
+                                        <span>/</span>
+                                        <b className={currentLanguage === "th" ? "text-black" : "text-gray-500"} onClick={() => changeLanguage("th")}>
+                                            TH
+                                        </b>
+                                        
+                                    </div> */}
+                                    <SignInButton />
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             </div>
