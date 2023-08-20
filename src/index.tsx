@@ -6,14 +6,17 @@ import AppLayout from "./layout/Layout.tsx";
 import LandingPage from "./views/LandingPage.tsx";
 import "./i18n.tsx";
 import { UserContextProvider } from "./contexts/UserContext.tsx";
+import { AppContxtProvider } from "./contexts/AppContext.tsx";
 
 const router = createBrowserRouter([{ path: "/", element: <LandingPage /> }]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <UserContextProvider>
-            <AppLayout>
-                <RouterProvider router={router} />
-            </AppLayout>
-        </UserContextProvider>
+        <AppContxtProvider>
+            <UserContextProvider>
+                <AppLayout>
+                    <RouterProvider router={router} />
+                </AppLayout>
+            </UserContextProvider>
+        </AppContxtProvider>
     </React.StrictMode>
 );

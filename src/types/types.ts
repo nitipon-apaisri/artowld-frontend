@@ -11,4 +11,8 @@ interface headerProps {
 interface UserContextType {
     token: string | null;
 }
-export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps };
+interface AppContextType {
+    lang: string;
+    changeLanguage: (lang: string) => void;
+}
+export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, AppContextType };

@@ -4,26 +4,20 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark, faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../contexts/UserContext";
-import { UserContextType } from "../types/types";
+import { AppContextType, UserContextType } from "../types/types";
 import SignInButton from "./shareComponents/SignInButton";
 import UserDropDown from "./shareComponents/UserDropDown";
 import LanguageDropdown from "./shareComponents/LanguageDropdown";
+import { AppContext } from "../contexts/AppContext";
 const Header = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { token } = useContext(UserContext) as UserContextType;
+    const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
     const [userDropdown, setUserDropdown] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
-    const [currentLanguage, setCurrentLanguage] = useState<string>("en");
     const [showLanguages, setShowLanguages] = useState<boolean>(false);
     const [languageDropdown, setLanguageDropdown] = useState<boolean>(false);
-    const changeLanguage = (lang: string) => {
-        localStorage.setItem("lang", lang);
-        i18n.changeLanguage(lang);
-        setShowLanguages(false);
-
-        window.location.reload();
-    };
     const toggleUserDropdown = () => {
         setUserDropdown(!toggleUserDropdown);
     };
@@ -50,14 +44,6 @@ const Header = () => {
         window.addEventListener("resize", updateSize);
         updateSize();
     }, [isSidebarToggle, innerWidth]);
-
-    useEffect(() => {
-        const lang = localStorage.getItem("lang");
-        if (lang) {
-            setCurrentLanguage(lang);
-            i18n.changeLanguage(lang);
-        }
-    }, [i18n]);
     return (
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
@@ -135,24 +121,32 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
+                    {token !== null && (
+                        <>
+                            <hr className="mt-4" />
+                            <div className="flex flex-row items-center space-x-4">
+                                <div className="user block bg-slate-500 rounded-full w-10 h-10  cursor-pointer my-4 shadow-custom2"></div>
+                                <h5 className="font-semibold">Lorem Ipsun</h5>
+                            </div>
+                        </>
+                    )}
                     <hr className="mt-4" />
-                    <div className="flex flex-row items-center space-x-4">
-                        <div className="user block bg-slate-500 rounded-full w-10 h-10  cursor-pointer my-4 shadow-custom2"></div>
-                        <h5 className="font-semibold">Lorem Ipsun</h5>
-                    </div>
-                    <hr />
                     <div>
                         <p className="mt-4" onClick={() => setShowLanguages(!showLanguages)}>
-                            Switch language : <b>{currentLanguage}</b>
+                            Switch language : <span className="font-extrabold text-lg">{lang === "en" ? "English" : "ไทย"}</span>
                         </p>
                         <div className={`${showLanguages ? "block" : "hidden"}`}>
                             <hr className="mt-4" />
                             <ul className="flex flex-col space-y-6 font-medium tracking-wider py-4 ">
                                 <li>
-                                    <h5 onClick={() => changeLanguage("en")}>EN</h5>
+                                    <h5 className={lang === "en" ? "text-black" : "text-gray-400"} onClick={() => changeLanguage("en")}>
+                                        English
+                                    </h5>
                                 </li>
                                 <li>
-                                    <h5 onClick={() => changeLanguage("th")}>TH</h5>
+                                    <h5 className={lang === "th" ? "text-black" : "text-gray-400"} onClick={() => changeLanguage("th")}>
+                                        ไทย
+                                    </h5>
                                 </li>
                             </ul>
                         </div>
