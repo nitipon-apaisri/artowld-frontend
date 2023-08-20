@@ -726,6 +726,10 @@ video {
   width: 100%;
 }
 
+.w-80{
+  width: 20rem;
+}
+
 .min-w-\[40px\]{
   min-width: 40px;
 }
@@ -1237,6 +1241,20 @@ b:hover{
   --tw-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.025), 0px 10px 10px -5px rgba(0, 0, 0, 0.02);
   --tw-shadow-colored: 0px 20px 25px -5px var(--tw-shadow-color), 0px 10px 10px -5px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (max-width: 1080px){
+  .max-\[1080px\]\:w-80{
+    width: 20rem;
+  }
+
+  .max-\[1080px\]\:w-96{
+    width: 24rem;
+  }
+
+  .max-\[1080px\]\:w-\[360px\]{
+    width: 360px;
+  }
 }
 
 @media not all and (min-width: 1024px){

@@ -6,6 +6,7 @@ const AppContext = createContext<AppContextType | null>(null);
 const AppContxtProvider = ({ children }: contextChildren) => {
     const { i18n } = useTranslation();
     const [lang, setLang] = useState<string>("en");
+
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
@@ -13,6 +14,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
             i18n.changeLanguage(lang);
         }
     }, [i18n]);
+
     const changeLanguage = (lang: string) => {
         localStorage.setItem("lang", lang);
         i18n.changeLanguage(lang);
