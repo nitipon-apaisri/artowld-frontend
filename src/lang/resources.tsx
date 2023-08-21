@@ -13,6 +13,7 @@ const resources = {
             risingStars: "Rising Stars",
             signIn: "Sign In",
             signOut: "Sign Out",
+            signUp: "Sign Up",
         },
     },
     th: {
@@ -29,6 +30,7 @@ const resources = {
             risingStars: "นักวาดหน้าใหม่",
             signIn: "เข้าสู่ระบบ",
             signOut: "ออกจากระบบ",
+            signUp: "ลงทะเบียน",
         },
     },
 };

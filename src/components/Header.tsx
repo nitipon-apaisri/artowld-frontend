@@ -9,10 +9,12 @@ import SignInButton from "./shareComponents/SignInButton";
 import UserDropDown from "./shareComponents/UserDropDown";
 import LanguageDropdown from "./shareComponents/LanguageDropdown";
 import { AppContext } from "../contexts/AppContext";
+import SignUpButton from "./shareComponents/SignUpButton";
 const Header = () => {
     const { t } = useTranslation();
     const { token } = useContext(UserContext) as UserContextType;
     const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
+    const breakpoint = 880;
     const [userDropdown, setUserDropdown] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
@@ -35,7 +37,7 @@ const Header = () => {
     useEffect(() => {
         const updateSize = () => {
             setInnerWidth(window.innerWidth);
-            if (innerWidth > 768) {
+            if (innerWidth > breakpoint) {
                 setIsSidebarToggle(false);
                 setShowLanguages(false);
                 setLanguageDropdown(false);
@@ -48,12 +50,17 @@ const Header = () => {
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
                 <div className="logo flex flex-row items-center space-x-4">
-                    <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className="block md:hidden  cursor-pointer min-w-[40px]" size="2xl" onClick={() => toggleSidebar()} />
+                    <FontAwesomeIcon
+                        icon={isSidebarToggle ? faXmark : faBars}
+                        className={`block min-[${breakpoint}px]:hidden  cursor-pointer min-w-[40px]`}
+                        size="2xl"
+                        onClick={() => toggleSidebar()}
+                    />
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center ">
-                    <nav className="max-md:hidden md:mr-4">
+                    <nav className={`max-[${breakpoint}px]:hidden md:mr-4`}>
                         <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             <li>
                                 <a href="/">{t("Home")}</a>
@@ -76,22 +83,13 @@ const Header = () => {
                         </div>
                     ) : (
                         <>
-                            {innerWidth > 768 && (
+                            {innerWidth > breakpoint && (
                                 <div className="flex flex-row items-center space-x-4">
                                     <div className="relative">
                                         <FontAwesomeIcon icon={faLanguage} size="xl" onClick={toggleLanguageDropdown} />
                                         {languageDropdown && <LanguageDropdown />}
                                     </div>
-                                    {/* <div className="flex flex-row items-center space-x-1">
-                                        <b className={currentLanguage === "en" ? "text-black" : "text-gray-500"} onClick={() => changeLanguage("en")}>
-                                            EN
-                                        </b>
-                                        <span>/</span>
-                                        <b className={currentLanguage === "th" ? "text-black" : "text-gray-500"} onClick={() => changeLanguage("th")}>
-                                            TH
-                                        </b>
-                                        
-                                    </div> */}
+                                    <SignUpButton />
                                     <SignInButton />
                                 </div>
                             )}
@@ -151,8 +149,9 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-160px)]">
+                    <div className="w-full absolute -translate-x-0 -translate-y-0 top-[calc(100%-180px)]">
                         <SignInButton width="w-full" />
+                        <SignUpButton width="w-full" />
                     </div>
                 </div>
             </aside>

@@ -576,6 +576,10 @@ video {
   top: calc(50% + 24px);
 }
 
+.top-\[calc\(100\%-180px\)\]{
+  top: calc(100% - 180px);
+}
+
 .-z-\[2\]{
   z-index: -2;
 }
@@ -726,10 +730,6 @@ video {
   width: 100%;
 }
 
-.w-80{
-  width: 20rem;
-}
-
 .min-w-\[40px\]{
   min-width: 40px;
 }
@@ -810,12 +810,6 @@ video {
 
 .gap-8{
   gap: 2rem;
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]){
@@ -1018,6 +1012,10 @@ video {
   font-weight: 700;
 }
 
+.font-extrabold{
+  font-weight: 800;
+}
+
 .font-medium{
   font-weight: 500;
 }
@@ -1028,10 +1026,6 @@ video {
 
 .font-semibold{
   font-weight: 600;
-}
-
-.font-extrabold{
-  font-weight: 800;
 }
 
 .tracking-wide{
@@ -1057,9 +1051,9 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.text-gray-500{
+.text-gray-400{
   --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .text-primary{
@@ -1070,11 +1064,6 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-gray-400{
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .antialiased{
@@ -1190,7 +1179,6 @@ h6{
   position: absolute;
   right: 0px;
   z-index: 50;
-  margin-top: 1rem;
   border-radius: 0.5rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -1237,6 +1225,41 @@ b:hover{
   }
 }
 
+.sign_in_button{
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 82 221 / var(--tw-bg-opacity));
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sign_up_button{
+  border-radius: 0.5rem;
+  background-color: transparent;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(6 82 221 / var(--tw-text-opacity));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sign_up_button:hover{
+  background-color: transparent;
+  text-decoration-line: underline;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+}
+
 .hover\:shadow-custom2:hover{
   --tw-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.025), 0px 10px 10px -5px rgba(0, 0, 0, 0.02);
   --tw-shadow-colored: 0px 20px 25px -5px var(--tw-shadow-color), 0px 10px 10px -5px var(--tw-shadow-color);
@@ -1244,14 +1267,6 @@ b:hover{
 }
 
 @media (max-width: 1080px){
-  .max-\[1080px\]\:w-80{
-    width: 20rem;
-  }
-
-  .max-\[1080px\]\:w-96{
-    width: 24rem;
-  }
-
   .max-\[1080px\]\:w-\[360px\]{
     width: 360px;
   }
@@ -1266,6 +1281,12 @@ b:hover{
 @media (max-width: 959px){
   .max-\[959px\]\:text-center{
     text-align: center;
+  }
+}
+
+@media (max-width: 880px){
+  .max-\[880px\]\:hidden{
+    display: none;
   }
 }
 
@@ -1329,6 +1350,12 @@ b:hover{
   }
 }
 
+@media (min-width: 880px){
+  .min-\[880px\]\:hidden{
+    display: none;
+  }
+}
+
 @media (min-width: 959px){
   .min-\[959px\]\:w-full{
     width: 100%;
@@ -1359,10 +1386,6 @@ b:hover{
 
   .lg\:w-24{
     width: 6rem;
-  }
-
-  .lg\:w-\[400px\]{
-    width: 400px;
   }
 
   .lg\:max-w-lg{

@@ -4,6 +4,7 @@ type creatorCardProps = { username?: string; image?: { banner: string; profile: 
 type dropdownProps = { children: React.ReactNode };
 type contextChildren = { children: React.ReactNode };
 type signInButtonProps = { width?: string; px?: string; py?: string };
+type signUpButtonProps = { width?: string; px?: string; py?: string };
 interface headerProps {
     toggleSidebar: () => void;
 }
@@ -15,4 +16,4 @@ interface AppContextType {
     lang: string;
     changeLanguage: (lang: string) => void;
 }
-export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, AppContextType };
+export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType };

@@ -7,8 +7,12 @@ import LandingPage from "./views/LandingPage.tsx";
 import "./i18n.tsx";
 import { UserContextProvider } from "./contexts/UserContext.tsx";
 import { AppContxtProvider } from "./contexts/AppContext.tsx";
+import UserRegisteration from "./views/UserRegistration.tsx";
 
-const router = createBrowserRouter([{ path: "/", element: <LandingPage /> }]);
+const router = createBrowserRouter([
+    { path: "/", element: <LandingPage /> },
+    { path: "/user/registration", element: <UserRegisteration /> },
+]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <AppContxtProvider>
