@@ -568,16 +568,12 @@ video {
   top: 100px;
 }
 
-.top-\[calc\(100\%-160px\)\]{
-  top: calc(100% - 160px);
+.top-\[calc\(100\%-180px\)\]{
+  top: calc(100% - 180px);
 }
 
 .top-\[calc\(50\%\+24px\)\]{
   top: calc(50% + 24px);
-}
-
-.top-\[calc\(100\%-180px\)\]{
-  top: calc(100% - 180px);
 }
 
 .-z-\[2\]{
@@ -1266,45 +1262,15 @@ b:hover{
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-@media (max-width: 1080px){
-  .max-\[1080px\]\:w-\[360px\]{
-    width: 360px;
-  }
-}
-
 @media not all and (min-width: 1024px){
   .max-lg\:flex-col{
     flex-direction: column;
   }
 }
 
-@media (max-width: 959px){
-  .max-\[959px\]\:text-center{
-    text-align: center;
-  }
-}
-
-@media (max-width: 880px){
-  .max-\[880px\]\:hidden{
-    display: none;
-  }
-}
-
-@media not all and (min-width: 768px){
-  .max-md\:hidden{
-    display: none;
-  }
-}
-
 @media not all and (min-width: 640px){
   .max-sm\:w-24{
     width: 6rem;
-  }
-}
-
-@media (max-width: 480px){
-  .max-\[480px\]\:w-80{
-    width: 20rem;
   }
 }
 
@@ -1341,28 +1307,8 @@ b:hover{
     display: block;
   }
 
-  .md\:hidden{
-    display: none;
-  }
-
   .md\:flex-row{
     flex-direction: row;
-  }
-}
-
-@media (min-width: 880px){
-  .min-\[880px\]\:hidden{
-    display: none;
-  }
-}
-
-@media (min-width: 959px){
-  .min-\[959px\]\:w-full{
-    width: 100%;
-  }
-
-  .min-\[959px\]\:grid-flow-col{
-    grid-auto-flow: column;
   }
 }
 

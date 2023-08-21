@@ -50,32 +50,11 @@ const Header = () => {
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
                 <div className="logo flex flex-row items-center space-x-4">
-                    <FontAwesomeIcon
-                        icon={isSidebarToggle ? faXmark : faBars}
-                        className={`block min-[${breakpoint}px]:hidden  cursor-pointer min-w-[40px]`}
-                        size="2xl"
-                        onClick={() => toggleSidebar()}
-                    />
+                    {innerWidth < breakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center ">
-                    <nav className={`max-[${breakpoint}px]:hidden md:mr-4`}>
-                        <ul className="flex flex-row space-x-6 font-medium tracking-wider">
-                            <li>
-                                <a href="/">{t("Home")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Explore")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Stats")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Resources")}</a>
-                            </li>
-                        </ul>
-                    </nav>
                     {token !== null ? (
                         <div className="relative">
                             <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-20 cursor-pointer" onClick={toggleUserDropdown}></div>
@@ -83,15 +62,33 @@ const Header = () => {
                         </div>
                     ) : (
                         <>
-                            {innerWidth > breakpoint && (
-                                <div className="flex flex-row items-center space-x-4">
-                                    <div className="relative">
-                                        <FontAwesomeIcon icon={faLanguage} size="xl" onClick={toggleLanguageDropdown} />
-                                        {languageDropdown && <LanguageDropdown />}
+                            {innerWidth >= breakpoint && (
+                                <>
+                                    <nav className={`md:mr-4`}>
+                                        <ul className="flex flex-row space-x-6 font-medium tracking-wider">
+                                            <li>
+                                                <a href="/">{t("Home")}</a>
+                                            </li>
+                                            <li>
+                                                <a href="/">{t("Explore")}</a>
+                                            </li>
+                                            <li>
+                                                <a href="/">{t("Stats")}</a>
+                                            </li>
+                                            <li>
+                                                <a href="/">{t("Resources")}</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <div className="flex flex-row items-center space-x-4">
+                                        <div className="relative">
+                                            <FontAwesomeIcon icon={faLanguage} size="xl" onClick={toggleLanguageDropdown} />
+                                            {languageDropdown && <LanguageDropdown />}
+                                        </div>
+                                        <SignUpButton />
+                                        <SignInButton />
                                     </div>
-                                    <SignUpButton />
-                                    <SignInButton />
-                                </div>
+                                </>
                             )}
                         </>
                     )}
