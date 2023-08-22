@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { registerProps } from "../types/types";
+import Api from "../services/api";
 const UserRegisteration = () => {
     const { t } = useTranslation();
     const [agree, setAgree] = useState(false);
@@ -8,8 +10,21 @@ const UserRegisteration = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
-    const onSubmit = (data: unknown) => console.log(data);
+        watch,
+    } = useForm<registerProps>();
+    const onSubmit: SubmitHandler<registerProps> = async (data) => {
+        const api = new Api();
+        const user = {
+            name: {
+                first: data.firstName,
+                last: data.lastName,
+            },
+            email: data.email,
+            password: data.password,
+        };
+        const res = await api.registerUser(user);
+        console.log(res);
+    };
     return (
         <main>
             <div className="wrapper">
@@ -42,8 +57,16 @@ const UserRegisteration = () => {
                             </div>
                             <div className="mb-2 flex flex-col">
                                 <label className="mb-2">Confirm Password</label>
-                                <input type="password" {...register("confirmPassword", { required: true })} />
-                                {errors.confirmPassword && <span>This field is required</span>}
+                                <input
+                                    type="password"
+                                    {...register("confirmPassword", {
+                                        required: true,
+                                        validate: (val: string) => {
+                                            if (watch("password") !== val) return "Your passwords do no match";
+                                        },
+                                    })}
+                                />
+                                {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
                             </div>
                             <div className="flex flex-row items-center">
                                 <input type="checkbox" {...register("termsAndConditions", { required: true })} onChange={() => setAgree(!agree)} />
