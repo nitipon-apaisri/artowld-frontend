@@ -14,6 +14,7 @@ const resources = {
             signIn: "Sign In",
             signOut: "Sign Out",
             signUp: "Sign Up",
+            userRegistration: "User Registration",
         },
     },
     th: {
@@ -31,6 +32,7 @@ const resources = {
             signIn: "เข้าสู่ระบบ",
             signOut: "ออกจากระบบ",
             signUp: "ลงทะเบียน",
+            userRegistration: "ลงทะเบียนผู้ใช้",
         },
     },
 };

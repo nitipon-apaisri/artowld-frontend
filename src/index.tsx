@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     { path: "/", element: <LandingPage /> },
     { path: "/user/registration", element: <UserRegisteration /> },
 ]);
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <AppContxtProvider>
             <UserContextProvider>
