@@ -1266,6 +1266,10 @@ b:hover{
   .max-lg\:flex-col{
     flex-direction: column;
   }
+
+  .max-lg\:text-center{
+    text-align: center;
+  }
 }
 
 @media not all and (min-width: 640px){

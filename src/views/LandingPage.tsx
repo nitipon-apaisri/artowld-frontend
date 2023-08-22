@@ -16,7 +16,7 @@ const LandingPage = () => {
         <main className="mt-32">
             <div className="wrapper max-w-[1920px] min-h-screen mx-auto sm:px-20 px-14">
                 <article className="flex max-lg:flex-col flex-row justify-between items-center">
-                    <section className="w-full 2xl:max-w-2xl max-[959px]:text-center lg:text-left">
+                    <section className="w-full 2xl:max-w-2xl max-lg:text-center lg:text-left">
                         <h1 className="text-3xl sm:text-4xl lg:text-2xl xl:text-3xl 2xl:text-4xl w-full lg:max-w-lg 2xl:max-w-xl  ">{t("slogan")}</h1>
                         <p className="font-normal text-sm antialiased text-[#8E8E8E] mt-4 lg:mt-0">{t("subSlogan")}</p>
                         <button className="bg-primary text-white font-semibold antialiased tracking-wide px-8 py-4 rounded-lg mt-8 mx-auto lg:mx-0">{t("Explore")}</button>
