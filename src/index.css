@@ -27,7 +27,7 @@ main {
     @apply mt-32;
 }
 input {
-    @apply border border-slate-400;
+    @apply border border-slate-400 rounded-md py-1 px-4;
 }
 .wrapper {
     @apply min-h-screen max-w-[1920px]  mx-auto sm:px-20 px-14;
@@ -63,10 +63,23 @@ b {
 .sign_in_button {
     @apply bg-primary text-white text-sm font-semibold antialiased tracking-wide rounded-lg;
 }
+.sign_in_button:hover {
+    @apply bg-primary_dark transition-all duration-500;
+}
 .sign_up_button {
     @apply bg-transparent text-primary text-sm font-semibold antialiased tracking-wide rounded-lg;
 }
 
 .sign_up_button:hover {
     @apply bg-transparent underline transition-all duration-500;
+}
+
+.submit {
+    @apply bg-primary hover:bg-primary_dark text-white text-sm font-semibold antialiased tracking-wide rounded-lg mt-10 cursor-pointer;
+}
+.submit_disabled {
+    @apply mt-10 bg-gray-300 text-white text-sm font-semibold antialiased tracking-wide rounded-lg;
+}
+.submit_disabled:hover {
+    @apply bg-gray-300 cursor-not-allowed;
 }

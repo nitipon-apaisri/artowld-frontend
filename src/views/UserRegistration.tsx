@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 const UserRegisteration = () => {
     const { t } = useTranslation();
+    const [agree, setAgree] = useState(false);
     const {
         register,
         handleSubmit,
@@ -11,28 +13,49 @@ const UserRegisteration = () => {
     return (
         <main>
             <div className="wrapper">
-                <h1 className="text-2xl">{t("userRegistration")}</h1>
-                <hr className="mt-4" />
-                <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="my-6">
-                        <label htmlFor="firstName">First name:</label>
-                        <input type="text" {...register("firstName", { required: true })} />
-                        {errors.firstName && <span>This field is required</span>}
-                        <label>Last name:</label>
-                        <input type="text" {...register("lastName", { required: true })} />
-                        {errors.lastName && <span>This field is required</span>}
+                <div className="max-w-4xl mx-auto">
+                    <div className="w-full">
+                        <h1 className="text-2xl">{t("userRegistration")}</h1>
+                        <hr className="my-2" />
+                        <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+                            <div className="flex flex-row space-x-4 my-2">
+                                <div className="w-full flex flex-col space-y-2">
+                                    <label htmlFor="firstName">First name</label>
+                                    <input type="text" {...register("firstName", { required: true })} />
+                                    {errors.firstName && <span>This field is required</span>}
+                                </div>
+                                <div className="w-full flex flex-col space-y-2">
+                                    <label>Last name</label>
+                                    <input type="text" {...register("lastName", { required: true })} />
+                                    {errors.lastName && <span>This field is required</span>}
+                                </div>
+                            </div>
+                            <div className="mb-2 flex flex-col">
+                                <label className="mb-2">Email</label>
+                                <input type="email" {...register("email", { required: true })} />
+                                {errors.email && <span>This field is required</span>}
+                            </div>
+                            <div className="mb-2 flex flex-col">
+                                <label className="mb-2">Password</label>
+                                <input type="password" {...register("password", { required: true })} />
+                                {errors.password && <span>This field is required</span>}
+                            </div>
+                            <div className="mb-2 flex flex-col">
+                                <label className="mb-2">Confirm Password</label>
+                                <input type="password" {...register("confirmPassword", { required: true })} />
+                                {errors.confirmPassword && <span>This field is required</span>}
+                            </div>
+                            <div className="flex flex-row items-center">
+                                <input type="checkbox" {...register("termsAndConditions", { required: true })} onChange={() => setAgree(!agree)} />
+                                <label className="ml-2 text-sm">I agree to the terms and conditions</label>
+                            </div>
+
+                            <button className={agree ? "submit" : "submit_disabled"} type="submit" disabled={!agree && true}>
+                                Submit
+                            </button>
+                        </form>
                     </div>
-                    <label>Email:</label>
-                    <input type="email" {...register("email", { required: true })} />
-                    {errors.email && <span>This field is required</span>}
-                    <label>Password:</label>
-                    <input type="password" {...register("password", { required: true })} />
-                    {errors.password && <span>This field is required</span>}
-                    <label>Confirm Password:</label>
-                    <input type="password" {...register("confirmPassword", { required: true })} />
-                    {errors.confirmPassword && <span>This field is required</span>}
-                    <button type="submit">Submit</button>
-                </form>
+                </div>
             </div>
         </main>
     );
