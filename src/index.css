@@ -83,3 +83,6 @@ b {
 .submit_disabled:hover {
     @apply bg-gray-300 cursor-not-allowed;
 }
+input:focus {
+    @apply outline-primary;
+}

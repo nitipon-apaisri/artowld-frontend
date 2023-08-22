@@ -1348,6 +1348,10 @@ b:hover{
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+input:focus{
+  outline-color: #0652DD;
+}
+
 .hover\:shadow-custom2:hover{
   --tw-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.025), 0px 10px 10px -5px rgba(0, 0, 0, 0.02);
   --tw-shadow-colored: 0px 20px 25px -5px var(--tw-shadow-color), 0px 10px 10px -5px var(--tw-shadow-color);
