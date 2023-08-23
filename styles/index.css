@@ -1352,6 +1352,29 @@ input:focus{
   outline-color: #0652DD;
 }
 
+.loader{
+  border-width: 5px;
+  --tw-border-opacity: 1;
+  border-color: rgb(6 82 221 / var(--tw-border-opacity));
+  width: 48px;
+  height: 48px;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hover\:shadow-custom2:hover{
   --tw-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.025), 0px 10px 10px -5px rgba(0, 0, 0, 0.02);
   --tw-shadow-colored: 0px 20px 25px -5px var(--tw-shadow-color), 0px 10px 10px -5px var(--tw-shadow-color);
