@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Api from "../services/api";
 import { signInProps } from "../types/types";
+import ErrorMessage from "../components/shareComponents/ErrorMessage";
 const UserSignIn = () => {
     const {
         register,
@@ -11,6 +12,7 @@ const UserSignIn = () => {
     } = useForm<signInProps>();
     const { t } = useTranslation();
     const [rememberMe, setRememberMe] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const onSubmit: SubmitHandler<signInProps> = async (data) => {
         const api = new Api();
         const user: object = {
@@ -23,7 +25,8 @@ const UserSignIn = () => {
                 if (rememberMe) sessionStorage.setItem("token", res.data.token);
             })
             .catch((err) => {
-                console.log(err);
+                setErrorMessage(err.response.data.message);
+                console.log(err.response.data.message);
             });
     };
 
@@ -50,7 +53,7 @@ const UserSignIn = () => {
                                 <input type="checkbox" onChange={() => setRememberMe(!rememberMe)} />
                                 <label className="ml-2 text-sm">{t("rememberMe")}</label>
                             </div>
-
+                            <ErrorMessage error={errorMessage} />
                             <button className="submit" type="submit">
                                 {t("submit")}
                             </button>
