@@ -41,28 +41,28 @@ const UserRegisteration = () => {
                         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
                             <div className="flex flex-row space-x-4 my-2">
                                 <div className="w-full flex flex-col space-y-2">
-                                    <label htmlFor="firstName">First name</label>
+                                    <label>{t("firstName")}</label>
                                     <input type="text" {...register("firstName", { required: true })} />
                                     {errors.firstName && <span>This field is required</span>}
                                 </div>
                                 <div className="w-full flex flex-col space-y-2">
-                                    <label>Last name</label>
+                                    <label>{t("lastName")}</label>
                                     <input type="text" {...register("lastName", { required: true })} />
                                     {errors.lastName && <span>This field is required</span>}
                                 </div>
                             </div>
                             <div className="mb-2 flex flex-col">
-                                <label className="mb-2">Email</label>
+                                <label className="mb-2">{t("email")}</label>
                                 <input type="email" {...register("email", { required: true })} />
                                 {errors.email && <span>This field is required</span>}
                             </div>
                             <div className="mb-2 flex flex-col">
-                                <label className="mb-2">Password</label>
+                                <label className="mb-2">{t("password")}</label>
                                 <input type="password" {...register("password", { required: true })} />
                                 {errors.password && <span>This field is required</span>}
                             </div>
                             <div className="mb-2 flex flex-col">
-                                <label className="mb-2">Confirm Password</label>
+                                <label className="mb-2">{t("comfirmPassword")}</label>
                                 <input
                                     type="password"
                                     {...register("confirmPassword", {
@@ -76,11 +76,11 @@ const UserRegisteration = () => {
                             </div>
                             <div className="flex flex-row items-center">
                                 <input type="checkbox" {...register("termsAndConditions", { required: true })} onChange={() => setAgree(!agree)} />
-                                <label className="ml-2 text-sm">I agree to the terms and conditions</label>
+                                <label className="ml-2 text-sm">{t("agree")}</label>
                             </div>
 
                             <button className={agree ? "submit" : "submit_disabled"} type="submit" disabled={!agree && true}>
-                                Submit
+                                {t("submit")}
                             </button>
                         </form>
                     </div>
