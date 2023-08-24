@@ -14,7 +14,7 @@ const UserRegisteration = () => {
     } = useForm<registerProps>();
     const onSubmit: SubmitHandler<registerProps> = async (data) => {
         const api = new Api();
-        const user = {
+        const user: object = {
             name: {
                 first: data.firstName,
                 last: data.lastName,
@@ -22,13 +22,19 @@ const UserRegisteration = () => {
             email: data.email,
             password: data.password,
         };
-        const res = await api.registerUser(user);
-        console.log(res);
+        await api
+            .registerUser(user)
+            .then(() => {
+                window.location.href = "/user/signin";
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
     return (
         <main>
             <div className="wrapper">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto lg:py-20">
                     <div className="w-full">
                         <h1 className="text-2xl">{t("userRegistration")}</h1>
                         <hr className="my-2" />

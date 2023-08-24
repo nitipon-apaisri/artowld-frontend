@@ -13,6 +13,10 @@ type registerProps = {
     confirmPassword: string;
     termsAndConditions: boolean;
 };
+type signInProps = {
+    email: string;
+    password: string;
+};
 interface headerProps {
     toggleSidebar: () => void;
 }
@@ -24,4 +28,4 @@ interface AppContextType {
     lang: string;
     changeLanguage: (lang: string) => void;
 }
-export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType, registerProps };
+export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType, registerProps, signInProps };

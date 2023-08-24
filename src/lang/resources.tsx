@@ -15,6 +15,7 @@ const resources = {
             signOut: "Sign Out",
             signUp: "Sign Up",
             userRegistration: "User Registration",
+            rememberMe: "Remember me",
         },
     },
     th: {
@@ -33,6 +34,7 @@ const resources = {
             signOut: "ออกจากระบบ",
             signUp: "ลงทะเบียน",
             userRegistration: "ลงทะเบียนผู้ใช้",
+            rememberMe: "จดจำฉัน",
         },
     },
 };
