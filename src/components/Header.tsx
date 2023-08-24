@@ -82,7 +82,7 @@ const Header = () => {
                                     </nav>
                                     <div className="flex flex-row items-center space-x-4">
                                         <div className="relative">
-                                            <FontAwesomeIcon icon={faLanguage} size="xl" onClick={toggleLanguageDropdown} />
+                                            <FontAwesomeIcon icon={faLanguage} size="xl" className="cursor-pointer" onClick={toggleLanguageDropdown} />
                                             {languageDropdown && <LanguageDropdown />}
                                         </div>
                                         <SignUpButton />

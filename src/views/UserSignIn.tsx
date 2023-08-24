@@ -36,12 +36,12 @@ const UserSignIn = () => {
                         <hr className="my-2" />
                         <form className="flex flex-col mt-4" onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-2 flex flex-col">
-                                <label className="mb-2">Email</label>
+                                <label className="mb-2">{t("email")}</label>
                                 <input type="email" {...register("email", { required: true })} />
                                 {errors.email && <span>This field is required</span>}
                             </div>
                             <div className="mb-2 flex flex-col">
-                                <label className="mb-2">Password</label>
+                                <label className="mb-2">{t("password")}</label>
                                 <input type="password" {...register("password", { required: true })} />
                                 {errors.password && <span>This field is required</span>}
                             </div>
@@ -52,7 +52,7 @@ const UserSignIn = () => {
                             </div>
 
                             <button className="submit" type="submit">
-                                Submit
+                                {t("submit")}
                             </button>
                         </form>
                     </div>

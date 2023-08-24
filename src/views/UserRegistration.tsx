@@ -15,11 +15,8 @@ const UserRegisteration = () => {
     const onSubmit: SubmitHandler<registerProps> = async (data) => {
         const api = new Api();
         const user: object = {
-            name: {
-                first: data.firstName,
-                last: data.lastName,
-            },
-            email: data.email,
+            name: `${data.firstName.toLocaleLowerCase()} ${data.lastName.toLocaleLowerCase()}`,
+            email: data.email.toLocaleLowerCase(),
             password: data.password,
         };
         await api
