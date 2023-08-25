@@ -22,7 +22,9 @@ const UserSignIn = () => {
         await api
             .signIn(user)
             .then((res) => {
-                if (rememberMe) sessionStorage.setItem("token", res.data.token);
+                if (rememberMe) localStorage.setItem("token", res.data.token);
+                else sessionStorage.setItem("token", res.data.token);
+                window.location.href = "/";
             })
             .catch((err) => {
                 setErrorMessage(err.response.data.message);

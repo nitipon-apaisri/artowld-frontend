@@ -5,7 +5,8 @@ const UserContext = createContext<UserContextType | null>(null);
 const UserContextProvider = ({ children }: contextChildren) => {
     const [token, setToken] = useState<string | null>(null);
     useEffect(() => {
-        setToken(localStorage.getItem("token"));
+        const token = localStorage.getItem("token");
+        if (token) setToken(token);
     }, []);
 
     return <UserContext.Provider value={{ token }}>{children}</UserContext.Provider>;
