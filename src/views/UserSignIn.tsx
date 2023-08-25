@@ -1,35 +1,29 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Api from "../services/api";
-import { signInProps } from "../types/types";
+import { UserContextType, signInProps } from "../types/types";
 import ErrorMessage from "../components/shareComponents/ErrorMessage";
+import { UserContext } from "../contexts/UserContext";
 const UserSignIn = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<signInProps>();
+    const { signIn } = useContext(UserContext) as UserContextType;
     const { t } = useTranslation();
     const [rememberMe, setRememberMe] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const onSubmit: SubmitHandler<signInProps> = async (data) => {
-        const api = new Api();
         const user: object = {
             email: data.email,
             password: data.password,
         };
-        await api
-            .signIn(user)
-            .then((res) => {
-                if (rememberMe) localStorage.setItem("token", res.data.token);
-                else sessionStorage.setItem("token", res.data.token);
-                window.location.href = "/";
-            })
-            .catch((err) => {
-                setErrorMessage(err.response.data.message);
-                console.log(err.response.data.message);
-            });
+        const res = await signIn(user, rememberMe);
+        if (res === true) {
+            window.location.href = "/";
+        } else setErrorMessage(res as string);
+        console.log(res);
     };
 
     return (

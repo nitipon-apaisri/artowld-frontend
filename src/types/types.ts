@@ -23,6 +23,8 @@ interface headerProps {
 
 interface UserContextType {
     token: string | null;
+    currentUser: object | null;
+    signIn: (user: object, rememberMe: boolean) => void | Promise<void> | Promise<unknown>;
 }
 interface AppContextType {
     lang: string;
