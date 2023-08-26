@@ -79,14 +79,17 @@ const Header = () => {
                                     <FontAwesomeIcon icon={faLanguage} size="xl" className="cursor-pointer" onClick={toggleLanguageDropdown} />
                                     {languageDropdown && <LanguageDropdown />}
                                 </div>
-                                <SignUpButton />
-                                <SignInButton />
                             </div>
-                            {token !== null && (
+                            {token !== null ? (
                                 <div className="relative">
                                     <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-10 cursor-pointer" onClick={toggleUserDropdown}></div>
                                     {userDropdown && <UserDropDown />}
                                 </div>
+                            ) : (
+                                <>
+                                    <SignUpButton />
+                                    <SignInButton />
+                                </>
                             )}
                         </>
                     )}
