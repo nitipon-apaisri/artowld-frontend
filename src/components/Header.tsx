@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const { t } = useTranslation();
-    const { currentUser, token } = useContext(UserContext) as UserContextType;
+    const { currentUser } = useContext(UserContext) as UserContextType;
     const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
     const breakpoint = 880;
     const [userDropdown, setUserDropdown] = useState<boolean>(false);
@@ -76,7 +76,7 @@ const Header = () => {
                                     {languageDropdown && <LanguageDropdown />}
                                 </div>
                             </div>
-                            {token !== null ? (
+                            {currentUser !== null ? (
                                 <div className="relative">
                                     <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-10 cursor-pointer" onClick={toggleUserDropdown}></div>
                                     {userDropdown && <UserDropDown />}
@@ -106,7 +106,7 @@ const Header = () => {
                             ))}
                         </ul>
                     </nav>
-                    {token !== null && (
+                    {currentUser !== null && (
                         <>
                             <hr className="mt-4" />
                             <div className="flex flex-row items-center space-x-4">
