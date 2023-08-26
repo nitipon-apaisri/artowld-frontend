@@ -65,7 +65,9 @@ const Header = () => {
                                 <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                                     {nav.map((item, index) => (
                                         <li key={index}>
-                                            <Link to={item.path}>{t(item.name)}</Link>
+                                            <Link to={item.path}>
+                                                <span className="px-4">{t(item.name)}</span>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -101,7 +103,7 @@ const Header = () => {
                         <ul className="flex flex-col space-y-6 font-medium tracking-wider">
                             {nav.map((item, index) => (
                                 <li key={index}>
-                                    <a href={item.path}>{t(item.name)}</a>
+                                    <Link to={item.path}>{t(item.name)}</Link>
                                 </li>
                             ))}
                         </ul>
