@@ -1,17 +1,17 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import { UserContextType, contextChildren } from "../types/types";
+import { UserContextType, UserType, contextChildren } from "../types/types";
 import Api from "../services/api";
 
 const UserContext = createContext<UserContextType | null>(null);
 const UserContextProvider = ({ children }: contextChildren) => {
     const api = useMemo(() => new Api(), []);
     const [token, setToken] = useState<string | null>(null);
-    const [currentUser, setCurrentUser] = useState<object | null>(null);
-    const callBack = useCallback(
+    const [currentUser, setCurrentUser] = useState<UserType | null>(null);
+    const getUser = useCallback(
         async (token: string) => {
             const res = await api.getUserByToken(token).then((res) => {
-                setCurrentUser(res.data);
-                return res.data;
+                setCurrentUser(res.data.user);
+                return res.data.user;
             });
             return res;
         },
@@ -22,9 +22,9 @@ const UserContextProvider = ({ children }: contextChildren) => {
         const token = localStorage.getItem("token") || sessionStorage.getItem("token");
         if (token) {
             setToken(token);
-            callBack(token);
+            getUser(token);
         }
-    }, [callBack]);
+    }, [getUser]);
 
     const signIn = async (user: object, rememberMe: boolean) => {
         const res = await api

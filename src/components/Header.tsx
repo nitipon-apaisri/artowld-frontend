@@ -12,7 +12,7 @@ import { AppContext } from "../contexts/AppContext";
 import SignUpButton from "./shareComponents/SignUpButton";
 const Header = () => {
     const { t } = useTranslation();
-    const { token } = useContext(UserContext) as UserContextType;
+    const { currentUser, token } = useContext(UserContext) as UserContextType;
     const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
     const breakpoint = 880;
     const [userDropdown, setUserDropdown] = useState<boolean>(false);
@@ -117,7 +117,7 @@ const Header = () => {
                             <hr className="mt-4" />
                             <div className="flex flex-row items-center space-x-4">
                                 <div className="user block bg-slate-500 rounded-full w-10 h-10  cursor-pointer my-4 shadow-custom2"></div>
-                                <h5 className="font-semibold">Lorem Ipsun</h5>
+                                <h5 className="font-semibold">{currentUser?.name}</h5>
                             </div>
                         </>
                     )}

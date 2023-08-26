@@ -23,11 +23,17 @@ interface headerProps {
 
 interface UserContextType {
     token: string | null;
-    currentUser: object | null;
+    currentUser: UserType | null;
     signIn: (user: object, rememberMe: boolean) => void | Promise<void> | Promise<unknown>;
 }
 interface AppContextType {
     lang: string;
     changeLanguage: (lang: string) => void;
 }
-export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType, registerProps, signInProps };
+interface UserType {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+}
+export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType, registerProps, signInProps, UserType };
