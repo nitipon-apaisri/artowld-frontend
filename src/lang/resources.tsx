@@ -24,6 +24,7 @@ const resources = {
             confirmPassword: "Confirm Password",
             agree: "I agree to the terms and conditions",
             submit: "Submit",
+            profile: "Profile",
         },
     },
     th: {
@@ -51,6 +52,7 @@ const resources = {
             confirmPassword: "ยืนยันรหัสผ่าน",
             agree: "ฉันยอมรับข้อตกลงและเงื่อนไข",
             submit: "ลงทะเบียน",
+            profile: "โปรไฟล์",
         },
     },
 };

@@ -11,8 +11,8 @@ class Api {
         const res = this.api.post("/user/signin", data);
         return res;
     }
-    async getUserByToken(token: string) {
-        const res = this.api.get(`/user/token/${token}`);
+    async getUserById(id: string) {
+        const res = this.api.get(`/user/${id}`);
         return res;
     }
 }

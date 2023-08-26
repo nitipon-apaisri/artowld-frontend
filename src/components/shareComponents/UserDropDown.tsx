@@ -1,27 +1,21 @@
 // import { dropdownProps } from "../../types/types";
 
 import { useTranslation } from "react-i18next";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+import { UserContextType } from "../../types/types";
 const UserDropDown = () => {
-    const { i18n } = useTranslation();
-    const changeLanguage = () => {
-        const currentLanguage = i18n.language;
-        const lng = currentLanguage === "en" ? "th" : "en";
-        i18n.changeLanguage(lng);
-    };
+    const { t } = useTranslation();
+    const { signOut } = useContext(UserContext) as UserContextType;
+
     return (
         <div className="dropdown w-44">
             <ul className="py-2 text-s text-black" aria-labelledby="dropdownDefaultButton">
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="#">{t("profile")}</a>
                 </li>
                 <li>
-                    <a onClick={() => changeLanguage()}>Switch language</a>
-                </li>
-                <li>
-                    <a href="#">Earnings</a>
-                </li>
-                <li>
-                    <a href="#">Sign out</a>
+                    <a onClick={signOut}>{t("signOut")}</a>
                 </li>
             </ul>
         </div>

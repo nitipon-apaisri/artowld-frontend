@@ -79,6 +79,8 @@ const Header = () => {
                                     <FontAwesomeIcon icon={faLanguage} size="xl" className="cursor-pointer" onClick={toggleLanguageDropdown} />
                                     {languageDropdown && <LanguageDropdown />}
                                 </div>
+                                <SignUpButton />
+                                <SignInButton />
                             </div>
                             {token !== null && (
                                 <div className="relative">

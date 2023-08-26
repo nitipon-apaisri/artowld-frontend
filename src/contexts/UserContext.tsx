@@ -8,8 +8,8 @@ const UserContextProvider = ({ children }: contextChildren) => {
     const [token, setToken] = useState<string | null>(null);
     const [currentUser, setCurrentUser] = useState<UserType | null>(null);
     const getUser = useCallback(
-        async (token: string) => {
-            const res = await api.getUserByToken(token).then((res) => {
+        async (id: string) => {
+            const res = await api.getUserById(id).then((res) => {
                 setCurrentUser(res.data.user);
                 return res.data.user;
             });
@@ -20,18 +20,24 @@ const UserContextProvider = ({ children }: contextChildren) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+        const userId = localStorage.getItem("userId") || sessionStorage.getItem("userId");
         if (token) {
             setToken(token);
-            getUser(token);
         }
+        if (userId) getUser(userId as string);
     }, [getUser]);
 
     const signIn = async (user: object, rememberMe: boolean) => {
         const res = await api
             .signIn(user)
             .then((res) => {
-                if (rememberMe) localStorage.setItem("token", res.data.token);
-                else sessionStorage.setItem("token", res.data.token);
+                if (rememberMe) {
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("userId", res.data.userId);
+                } else {
+                    sessionStorage.setItem("token", res.data.token);
+                    sessionStorage.setItem("userId", res.data.userId);
+                }
                 setToken(res.data.token);
                 return true;
             })
@@ -41,7 +47,16 @@ const UserContextProvider = ({ children }: contextChildren) => {
         return res;
     };
 
-    return <UserContext.Provider value={{ token, currentUser, signIn }}>{children}</UserContext.Provider>;
+    const signOut = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("userId");
+        setToken(null);
+        setCurrentUser(null);
+    };
+
+    return <UserContext.Provider value={{ token, currentUser, signIn, signOut }}>{children}</UserContext.Provider>;
 };
 
 export { UserContext, UserContextProvider };

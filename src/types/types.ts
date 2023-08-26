@@ -25,6 +25,7 @@ interface UserContextType {
     token: string | null;
     currentUser: UserType | null;
     signIn: (user: object, rememberMe: boolean) => void | Promise<void> | Promise<unknown>;
+    signOut: () => void;
 }
 interface AppContextType {
     lang: string;
