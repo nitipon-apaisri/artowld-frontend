@@ -1,10 +1,10 @@
 const resources = {
     en: {
         translation: {
-            Home: "Home",
-            Explore: "Explore",
-            Stats: "Stats",
-            Resources: "Resources",
+            home: "Home",
+            explore: "Explore",
+            stats: "Stats",
+            resources: "Resources",
             slogan: "Discover, Collect, and Sell extraordinary arts.",
             subSlogan: "The world's most popular and largest digital art marketplace.",
             title: "ARTOWLD - Discover, Collect, and Sell extraordinary arts.",
@@ -25,14 +25,15 @@ const resources = {
             agree: "I agree to the terms and conditions",
             submit: "Submit",
             profile: "Profile",
+            market: "Market",
         },
     },
     th: {
         translation: {
-            Home: "หน้าหลัก",
-            Explore: "สำรวจ",
-            Stats: "สถิติ",
-            Resources: "ทรัพยากร",
+            home: "หน้าหลัก",
+            explore: "สำรวจ",
+            stats: "สถิติ",
+            resources: "ทรัพยากร",
             slogan: "ค้นพบ สะสม และขายศิลปะที่น่าทึ่งจากทั่วโลก",
             subSlogan: "ตลาดศิลปะดิจิทัลที่ได้รับความนิยมและใหญ่ที่สุดของโลก",
             title: "ARTOWLD - ค้นพบ สะสม และขายศิลปะที่น่าทึ่งจากทั่วโลก",
@@ -53,6 +54,7 @@ const resources = {
             agree: "ฉันยอมรับข้อตกลงและเงื่อนไข",
             submit: "ลงทะเบียน",
             profile: "โปรไฟล์",
+            market: "ตลาด",
         },
     },
 };

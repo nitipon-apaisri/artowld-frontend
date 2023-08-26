@@ -1,5 +1,5 @@
 import React from "react";
-import { signInButtonProps } from "../../types/types";
+import { signInButtonProps } from "../../../types/types";
 import { useTranslation } from "react-i18next";
 
 const toSignIn = () => {

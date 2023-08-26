@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark, faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../contexts/UserContext";
 import { AppContextType, UserContextType } from "../types/types";
-import SignInButton from "./shareComponents/SignInButton";
-import UserDropDown from "./shareComponents/UserDropDown";
-import LanguageDropdown from "./shareComponents/LanguageDropdown";
+import SignInButton from "./shareComponents/button/SignInButton";
+import UserDropDown from "./shareComponents/dropdown/UserDropDown";
+import LanguageDropdown from "./shareComponents/dropdown/LanguageDropdown";
 import { AppContext } from "../contexts/AppContext";
-import SignUpButton from "./shareComponents/SignUpButton";
+import SignUpButton from "./shareComponents/button/SignUpButton";
+import nav from "../modules/nav";
 const Header = () => {
     const { t } = useTranslation();
     const { currentUser, token } = useContext(UserContext) as UserContextType;
@@ -60,18 +61,11 @@ const Header = () => {
                         <>
                             <nav className={`md:mr-4`}>
                                 <ul className="flex flex-row space-x-6 font-medium tracking-wider">
-                                    <li>
-                                        <a href="/">{t("Home")}</a>
-                                    </li>
-                                    <li>
-                                        <a href="/">{t("Explore")}</a>
-                                    </li>
-                                    <li>
-                                        <a href="/">{t("Stats")}</a>
-                                    </li>
-                                    <li>
-                                        <a href="/">{t("Resources")}</a>
-                                    </li>
+                                    {nav.map((item, index) => (
+                                        <li key={index}>
+                                            <a href={item.path}>{t(item.name)}</a>
+                                        </li>
+                                    ))}
                                 </ul>
                             </nav>
                             <div className="flex flex-row items-center space-x-4">
@@ -103,18 +97,11 @@ const Header = () => {
                 <div className="relative h-full">
                     <nav>
                         <ul className="flex flex-col space-y-6 font-medium tracking-wider">
-                            <li className="">
-                                <a href="/">{t("Home")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Explore")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Stats")}</a>
-                            </li>
-                            <li>
-                                <a href="/">{t("Resources")}</a>
-                            </li>
+                            {nav.map((item, index) => (
+                                <li key={index}>
+                                    <a href={item.path}>{t(item.name)}</a>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
                     {token !== null && (

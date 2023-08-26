@@ -37,4 +37,22 @@ interface UserType {
     email: string;
     role: string;
 }
-export type { layoutProps, creatorCardProps, dropdownProps, headerProps, contextChildren, UserContextType, signInButtonProps, signUpButtonProps, AppContextType, registerProps, signInProps, UserType };
+interface NavType {
+    name: string;
+    path: string;
+}
+export type {
+    layoutProps,
+    creatorCardProps,
+    dropdownProps,
+    headerProps,
+    contextChildren,
+    UserContextType,
+    signInButtonProps,
+    signUpButtonProps,
+    AppContextType,
+    registerProps,
+    signInProps,
+    UserType,
+    NavType,
+};
