@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import AppLayout from "./layout/Layout.tsx";
 import LandingPage from "./views/LandingPage.tsx";
@@ -10,19 +10,20 @@ import { AppContxtProvider } from "./contexts/AppContext.tsx";
 import UserRegisteration from "./views/UserRegistration.tsx";
 import UserSignIn from "./views/UserSignIn.tsx";
 
-const router = createBrowserRouter([
-    { path: "/", element: <LandingPage /> },
-    { path: "/user/registration", element: <UserRegisteration /> },
-    { path: "/user/signin", element: <UserSignIn /> },
-]);
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <AppContxtProvider>
-            <UserContextProvider>
-                <AppLayout>
-                    <RouterProvider router={router} />
-                </AppLayout>
-            </UserContextProvider>
-        </AppContxtProvider>
+        <BrowserRouter>
+            <AppContxtProvider>
+                <UserContextProvider>
+                    <AppLayout>
+                        <Routes>
+                            <Route path="/" element={<LandingPage />} />
+                            <Route path="/user/registration" element={<UserRegisteration />} />
+                            <Route path="/user/signin" element={<UserSignIn />} />
+                        </Routes>
+                    </AppLayout>
+                </UserContextProvider>
+            </AppContxtProvider>
+        </BrowserRouter>
     </React.StrictMode>
 );

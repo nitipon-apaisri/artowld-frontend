@@ -11,6 +11,8 @@ import LanguageDropdown from "./shareComponents/dropdown/LanguageDropdown";
 import { AppContext } from "../contexts/AppContext";
 import SignUpButton from "./shareComponents/button/SignUpButton";
 import nav from "../modules/nav";
+import { Link } from "react-router-dom";
+
 const Header = () => {
     const { t } = useTranslation();
     const { currentUser, token } = useContext(UserContext) as UserContextType;
@@ -63,7 +65,7 @@ const Header = () => {
                                 <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                                     {nav.map((item, index) => (
                                         <li key={index}>
-                                            <a href={item.path}>{t(item.name)}</a>
+                                            <Link to={item.path}>{t(item.name)}</Link>
                                         </li>
                                     ))}
                                 </ul>

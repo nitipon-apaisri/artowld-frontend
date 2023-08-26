@@ -10,8 +10,8 @@ const UserContextProvider = ({ children }: contextChildren) => {
     const getUser = useCallback(
         async (id: string) => {
             const res = await api.getUserById(id).then((res) => {
-                setCurrentUser(res.data.user);
-                return res.data.user;
+                setCurrentUser(res.data);
+                return res.data;
             });
             return res;
         },
@@ -24,7 +24,7 @@ const UserContextProvider = ({ children }: contextChildren) => {
         if (token) {
             setToken(token);
         }
-        if (userId && currentUser) getUser(userId as string);
+        if (userId && currentUser === null) getUser(userId as string);
     }, [getUser, currentUser]);
 
     const signIn = async (user: object, rememberMe: boolean) => {
