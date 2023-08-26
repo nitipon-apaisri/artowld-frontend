@@ -9,7 +9,13 @@ import { UserContextProvider } from "./contexts/UserContext.tsx";
 import { AppContxtProvider } from "./contexts/AppContext.tsx";
 import UserRegisteration from "./views/UserRegistration.tsx";
 import UserSignIn from "./views/UserSignIn.tsx";
+import { RouterType } from "./types/types.ts";
 
+const routers: RouterType[] = [
+    { path: "/", element: <LandingPage /> },
+    { path: "/user/registration", element: <UserRegisteration /> },
+    { path: "/user/signin", element: <UserSignIn /> },
+];
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <BrowserRouter>
@@ -17,9 +23,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 <UserContextProvider>
                     <AppLayout>
                         <Routes>
-                            <Route path="/" element={<LandingPage />} />
-                            <Route path="/user/registration" element={<UserRegisteration />} />
-                            <Route path="/user/signin" element={<UserSignIn />} />
+                            {routers.map((router, index) => (
+                                <Route key={index} path={router.path} element={router.element} />
+                            ))}
                         </Routes>
                     </AppLayout>
                 </UserContextProvider>

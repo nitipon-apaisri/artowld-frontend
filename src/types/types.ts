@@ -41,6 +41,10 @@ interface NavType {
     name: string;
     path: string;
 }
+interface RouterType {
+    path: string;
+    element: React.ReactNode;
+}
 export type {
     layoutProps,
     creatorCardProps,
@@ -55,4 +59,5 @@ export type {
     signInProps,
     UserType,
     NavType,
+    RouterType,
 };
