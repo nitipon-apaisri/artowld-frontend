@@ -24,8 +24,8 @@ const UserContextProvider = ({ children }: contextChildren) => {
         if (token) {
             setToken(token);
         }
-        if (userId) getUser(userId as string);
-    }, [getUser]);
+        if (userId && currentUser) getUser(userId as string);
+    }, [getUser, currentUser]);
 
     const signIn = async (user: object, rememberMe: boolean) => {
         const res = await api
