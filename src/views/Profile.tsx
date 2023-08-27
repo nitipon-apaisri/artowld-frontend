@@ -5,16 +5,25 @@ const Profile = () => {
                 <div className="profile_banner"></div>
                 <section>
                     <div className="wrapper">
-                        <div className="profile_info flex space-x-20 -mt-16">
+                        <div className="profile_info">
                             <div className="profile_media">
-                                <div className="user_profile_image w-20 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-8 outline-white"></div>
-                                <h4 className="text-center text-xl mt-6 font-bold">John Doe</h4>
+                                <div className="profile_image "></div>
+                                <h4 className="text-center text-xl mt-8 font-bold">John Doe</h4>
                             </div>
-                            <div className="profile_bio w-full">
-                                <div className="external_links flex bg-white space-x-4 py-4 px-8 rounded-[12px] shadow-custom2 justify-center items-center w-fit">
-                                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
-                                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
-                                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
+                            <div className="profile_bio">
+                                <div className="flex justify-end">
+                                    <div className="external_links ">
+                                        <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
+                                        <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
+                                        <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div className="profile_bio_content mt-10">
+                                    <p className="text-slate-400 font-medium antialiased tracking-wide">
+                                        ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque
+                                        dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in
+                                        pellentesque massa placerat
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -97,6 +97,18 @@ input:focus {
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
 }
+.profile_info {
+    @apply flex space-x-20 -mt-[120px];
+}
+.profile_image {
+    @apply w-60 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white;
+}
+.profile_bio {
+    @apply w-full mt-[88px];
+}
+.external_links {
+    @apply flex bg-white space-x-4 py-4 px-8 rounded-[12px] shadow-custom2 justify-center items-center w-fit;
+}
 .profile_banner {
     @apply w-full h-96 bg-slate-500;
 }
