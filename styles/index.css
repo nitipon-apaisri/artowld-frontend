@@ -615,6 +615,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .ml-10{
   margin-left: 2.5rem;
 }
@@ -691,6 +695,10 @@ video {
   height: 100%;
 }
 
+.max-h-20{
+  max-height: 5rem;
+}
+
 .max-h-\[560px\]{
   max-height: 560px;
 }
@@ -717,6 +725,10 @@ video {
 
 .w-44{
   width: 11rem;
+}
+
+.w-60{
+  width: 15rem;
 }
 
 .w-8{
@@ -807,6 +819,10 @@ video {
 
 .justify-end{
   justify-content: flex-end;
+}
+
+.justify-center{
+  justify-content: center;
 }
 
 .justify-between{
@@ -1053,6 +1069,10 @@ video {
   font-weight: 600;
 }
 
+.capitalize{
+  text-transform: capitalize;
+}
+
 .tracking-wide{
   letter-spacing: 0.025em;
 }
@@ -1101,6 +1121,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-slate-300{
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
 .antialiased{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1126,6 +1151,10 @@ video {
   outline-width: 8px;
 }
 
+.outline-\[10px\]{
+  outline-width: 10px;
+}
+
 .outline-white{
   outline-color: #fff;
 }
@@ -1146,6 +1175,21 @@ video {
 
 .ease-in-out{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 :root {
@@ -1405,19 +1449,6 @@ input:focus{
   margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.profile_image{
-  margin-left: auto;
-  margin-right: auto;
-  aspect-ratio: 1 / 1;
-  width: 15rem;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
-  outline-style: solid;
-  outline-width: 10px;
-  outline-color: #fff;
-}
-
 .profile_bio{
   margin-top: 88px;
   width: 100%;
@@ -1455,6 +1486,11 @@ input:focus{
   width: 100%;
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.activeTab{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 @keyframes rotation {

@@ -2,6 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    @variants responsive {
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    }
+}
 :root {
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
@@ -100,9 +115,6 @@ input:focus {
 .profile_info {
     @apply flex space-x-20 -mt-[120px];
 }
-.profile_image {
-    @apply w-60 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white;
-}
 .profile_bio {
     @apply w-full mt-[88px];
 }
@@ -111,6 +123,9 @@ input:focus {
 }
 .profile_banner {
     @apply w-full h-96 bg-slate-500;
+}
+.activeTab {
+    @apply text-black;
 }
 @keyframes rotation {
     0% {
