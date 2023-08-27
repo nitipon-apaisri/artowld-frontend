@@ -24,7 +24,7 @@ h6 {
     @apply font-bold tracking-wide antialiased;
 }
 main {
-    @apply mt-32;
+    @apply mt-28;
 }
 input {
     @apply border border-slate-400 rounded-md py-1 px-4;
@@ -97,7 +97,9 @@ input:focus {
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
 }
-
+.profile_banner {
+    @apply w-full h-96 bg-slate-500;
+}
 @keyframes rotation {
     0% {
         transform: rotate(0deg);

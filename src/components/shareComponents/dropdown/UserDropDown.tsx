@@ -12,7 +12,7 @@ const UserDropDown = () => {
         <div className="dropdown w-44">
             <ul className="py-2 text-s text-black divide-y divide-gray-100">
                 <li>
-                    <a href="#">{t("profile")}</a>
+                    <a href="/user/profile">{t("profile")}</a>
                 </li>
                 <li>
                     <a onClick={signOut}>{t("signOut")}</a>

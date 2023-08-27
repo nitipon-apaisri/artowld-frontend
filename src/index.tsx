@@ -10,11 +10,13 @@ import { AppContxtProvider } from "./contexts/AppContext.tsx";
 import UserRegisteration from "./views/UserRegistration.tsx";
 import UserSignIn from "./views/UserSignIn.tsx";
 import { RouterType } from "./types/types.ts";
+import Profile from "./views/Profile.tsx";
 
 const routers: RouterType[] = [
     { path: "/", element: <LandingPage /> },
     { path: "/user/registration", element: <UserRegisteration /> },
     { path: "/user/signin", element: <UserSignIn /> },
+    { path: "/user/profile", element: <Profile /> },
 ];
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
