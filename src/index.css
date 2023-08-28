@@ -135,3 +135,9 @@ input:focus {
         transform: rotate(360deg);
     }
 }
+
+@media only screen and (max-width: 880px) {
+    .profile_info {
+        @apply flex-col space-x-0 space-y-4 -mt-[120px];
+    }
+}
