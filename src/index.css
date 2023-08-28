@@ -140,4 +140,16 @@ input:focus {
     .profile_info {
         @apply flex-col space-x-0 space-y-4 -mt-[120px];
     }
+    .profile_bio {
+        @apply flex flex-col;
+    }
+    .profile_bio_content {
+        @apply order-1 mt-4 text-center;
+    }
+    .external_links_wrapper {
+        @apply order-2 mt-4 justify-center;
+    }
+    .external_links {
+        @apply shadow-none;
+    }
 }

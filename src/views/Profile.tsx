@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import userTabs from "../modules/userTabs";
 import capitalize from "../utils/capitalize";
+import { AppContextType } from "../types/types";
+import { AppContext } from "../contexts/AppContext";
 
 const Profile = () => {
+    const { isBreakpoint } = useContext(AppContext) as AppContextType;
     const [activeTab, setActiveTab] = useState<number>(1);
     const [previusTab, setPreviusTab] = useState<number>(0);
     const toggleTab = (tab: number) => {
@@ -21,7 +24,7 @@ const Profile = () => {
     };
     const ExternalLinks = () => {
         return (
-            <div className="flex justify-end">
+            <div className="external_links_wrapper flex justify-end">
                 <div className="external_links ">
                     <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
                     <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
@@ -45,7 +48,7 @@ const Profile = () => {
                 <div className="wrapper">
                     <section>
                         <div className="profile_info">
-                            <div className="profile_media max-[1366px]:mt-10    ">
+                            <div className="profile_media max-[1366px]:mt-10">
                                 <div className="profile_image w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white"></div>
                                 <h4 className="text-center text-xl mt-8 font-bold">John Doe</h4>
                             </div>
@@ -55,7 +58,7 @@ const Profile = () => {
                             </div>
                         </div>
                     </section>
-                    <hr className="mt-10 mb-6" />
+                    <hr className={`${isBreakpoint ? "mt-6" : "mt-10"} mb-6`} />
                     <section>
                         <div className="flex justify-center space-x-4">
                             {userTabs.map((tab, index) => (
