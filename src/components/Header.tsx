@@ -16,11 +16,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const { t } = useTranslation();
     const { currentUser } = useContext(UserContext) as UserContextType;
-    const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
-    const breakpoint = 880;
+    const { lang, isBreakpoint, changeLanguage } = useContext(AppContext) as AppContextType;
     const [userDropdown, setUserDropdown] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
-    const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [showLanguages, setShowLanguages] = useState<boolean>(false);
     const [languageDropdown, setLanguageDropdown] = useState<boolean>(false);
     const toggleUserDropdown = () => {
@@ -39,27 +37,22 @@ const Header = () => {
     };
 
     useEffect(() => {
-        const updateSize = () => {
-            setInnerWidth(window.innerWidth);
-            if (innerWidth > breakpoint) {
-                setIsSidebarToggle(false);
-                setShowLanguages(false);
-                setLanguageDropdown(false);
-            }
-        };
-        window.addEventListener("resize", updateSize);
-        updateSize();
-    }, [isSidebarToggle, innerWidth]);
+        if (!isBreakpoint) {
+            setIsSidebarToggle(false);
+            setShowLanguages(false);
+            setLanguageDropdown(false);
+        }
+    }, [isSidebarToggle, isBreakpoint]);
     return (
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
                 <div className="logo flex flex-row items-center space-x-4">
-                    {innerWidth < breakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
+                    {isBreakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
                 <div className="menu_and_user flex flex-row items-center ">
-                    {innerWidth >= breakpoint && (
+                    {!isBreakpoint && (
                         <>
                             <nav className={`md:mr-4`}>
                                 <ul className="flex flex-row space-x-6 font-medium tracking-wider">

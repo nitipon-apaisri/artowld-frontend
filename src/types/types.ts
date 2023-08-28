@@ -29,6 +29,7 @@ interface UserContextType {
 }
 interface AppContextType {
     lang: string;
+    isBreakpoint: boolean;
     changeLanguage: (lang: string) => void;
 }
 interface UserType {
