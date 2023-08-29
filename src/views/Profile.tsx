@@ -1,11 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import userTabs from "../modules/userTabs";
 import capitalize from "../utils/capitalize";
-import { AppContextType } from "../types/types";
+import { AppContextType, UserContextType, productCardProps } from "../types/types";
 import { AppContext } from "../contexts/AppContext";
+import { UserContext } from "../contexts/UserContext";
+import { useTranslation } from "react-i18next";
+import ProductCard from "../components/Card/ProductCard";
+import { sampleProducts } from "../data/sample";
 
 const Profile = () => {
-    const { isBreakpoint } = useContext(AppContext) as AppContextType;
+    const { t } = useTranslation();
+    const { isBreakpoint, lang } = useContext(AppContext) as AppContextType;
+    const { currentUser } = useContext(UserContext) as UserContextType;
     const [activeTab, setActiveTab] = useState<number>(1);
     const [previusTab, setPreviusTab] = useState<number>(0);
     const toggleTab = (tab: number) => {
@@ -50,7 +56,7 @@ const Profile = () => {
                         <div className="profile_info">
                             <div className="profile_media max-[1366px]:mt-10">
                                 <div className="profile_image w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white"></div>
-                                <h4 className="text-center text-xl mt-8 font-bold">John Doe</h4>
+                                <h4 className="text-center text-xl mt-8 font-bold">{currentUser?.name}</h4>
                             </div>
                             <div className="profile_bio">
                                 <ExternalLinks />
@@ -61,14 +67,19 @@ const Profile = () => {
                     <hr className={`${isBreakpoint ? "mt-6" : "mt-10"} mb-6`} />
                     <section>
                         <div className="flex justify-center space-x-4">
-                            {userTabs.map((tab, index) => (
+                            {userTabs.map((tab: string, index: number) => (
                                 <span key={index} className={`tab${index + 1} font-semibold antialiased tracking-wide text-slate-300 cursor-pointer`} onClick={() => toggleTab(index + 1)}>
-                                    {capitalize(tab)}
+                                    {lang === "en" ? capitalize(tab) : t(tab)}
                                 </span>
                             ))}
                         </div>
                     </section>
-                    <hr className="mt-6 " />
+                    <hr className="my-6 " />
+                    <div className="w-full grid grid-cols-5 grid-flow-row gap-6 hide_scrollbar mt-10">
+                        {sampleProducts.map((product: productCardProps, index: number) => (
+                            <ProductCard product={product.product} key={index} />
+                        ))}
+                    </div>
                 </div>
             </article>
         </main>

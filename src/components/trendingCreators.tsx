@@ -1,5 +1,5 @@
 import { sampleCreators } from "../data/sample";
-import CreatorCard from "./shareComponents/CreatorCard";
+import CreatorCard from "./Card/CreatorCard";
 
 const TrendingCreators = () => {
     return (

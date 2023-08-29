@@ -1,3 +1,5 @@
+import { productCardProps } from "../types/types";
+
 const sampleCreators = [
     {
         id: 1,
@@ -46,4 +48,63 @@ const sampleCreators = [
     },
 ];
 
-export { sampleCreators };
+const sampleProducts: productCardProps[] = [
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 1",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 2",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 3",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 4",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 5",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 6",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 7",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 8",
+            price: 0,
+        },
+    },
+];
+
+export { sampleCreators, sampleProducts };

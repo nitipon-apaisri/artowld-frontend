@@ -26,6 +26,9 @@ const resources = {
             submit: "Submit",
             profile: "Profile",
             market: "Market",
+            created: "Created",
+            collected: "Collected",
+            favorite: "Favorite",
         },
     },
     th: {
@@ -55,6 +58,9 @@ const resources = {
             submit: "ลงทะเบียน",
             profile: "โปรไฟล์",
             market: "ตลาด",
+            created: "ผลงานที่สร้าง",
+            collected: "สะสม",
+            favorite: "ชื่นชอบ",
         },
     },
 };
