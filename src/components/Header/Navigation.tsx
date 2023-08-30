@@ -39,9 +39,9 @@ const Navigation = () => {
                         <ul className="flex flex-row space-x-6 font-medium tracking-wider">
                             {nav.map((item, index) => (
                                 <li key={index}>
-                                    <Link to={item.path}>
+                                    <a href={item.path}>
                                         <span className="px-4">{t(item.name)}</span>
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
