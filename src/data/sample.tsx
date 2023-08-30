@@ -106,6 +106,31 @@ const sampleProducts: productCardProps[] = [
         },
     },
 ];
+
+const sampleCollectedProducts: productCardProps[] = [
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 1",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 2",
+            price: 0,
+        },
+    },
+    {
+        product: {
+            creator: "Lorem Ipsum",
+            title: "product 3",
+            price: 0,
+        },
+    },
+];
+
 const bio: string =
     "ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat";
-export { sampleCreators, sampleProducts, bio };
+export { sampleCreators, sampleProducts, bio, sampleCollectedProducts };

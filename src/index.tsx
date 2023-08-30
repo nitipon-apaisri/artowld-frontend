@@ -17,7 +17,13 @@ const routers: RouterType[] = [
     { path: "/user/registration", element: <UserRegisteration /> },
     { path: "/user/signin", element: <UserSignIn /> },
     { path: "/user/profile", element: <Profile /> },
+    { path: "/user/profile/created", element: <Profile /> },
+    { path: "/user/profile/collected", element: <Profile /> },
+    { path: "/user/profile/favorite", element: <Profile /> },
     { path: "/:userId/profile", element: <Profile /> },
+    { path: "/:userId/profile/created", element: <Profile /> },
+    { path: "/:userId/profile/collected", element: <Profile /> },
+    { path: "/:userId/profile/favorite", element: <Profile /> },
 ];
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>

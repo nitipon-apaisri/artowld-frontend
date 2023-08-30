@@ -8,7 +8,7 @@ type signInButtonProps = { width?: string; px?: string; py?: string };
 type signUpButtonProps = { width?: string; px?: string; py?: string };
 type sidebarProps = { isSidebarToggle?: boolean };
 type userBioProps = { bio?: string };
-type externalLinkProps = { href?: [string] };
+type externalLinkProps = { href?: string[] };
 type registerProps = {
     firstName: string;
     lastName: string;
