@@ -12,12 +12,8 @@ const Profile = () => {
     const { t } = useTranslation();
     const { isBreakpoint, lang } = useContext(AppContext) as AppContextType;
     const { currentUser } = useContext(UserContext) as UserContextType;
-    const [activeTab, setActiveTab] = useState<number>(1);
-    const [previusTab, setPreviusTab] = useState<number>(0);
-    const toggleTab = (tab: number) => {
-        setPreviusTab(activeTab);
-        setActiveTab(tab);
-    };
+    const [activeTab, setActiveTab] = useState<number>(0);
+
     const ProfileBio = () => {
         return (
             <div className="profile_bio_content mt-10 max-h-20 overflow-auto no-scrollbar">
@@ -40,13 +36,12 @@ const Profile = () => {
         );
     };
     useEffect(() => {
-        const tab = document.querySelector(`.tab${activeTab}`) as HTMLElement;
-        tab.classList.add("activeTab");
-        if (previusTab !== activeTab) {
-            const prevTab = document.querySelector(`.tab${previusTab}`) as HTMLElement;
-            previusTab !== 0 && prevTab.classList.remove("activeTab");
-        }
-    }, [activeTab, previusTab]);
+        // Change active tab
+        const tabs = document.querySelectorAll(".user_tab") as NodeListOf<HTMLElement>;
+        const activedTab = document.querySelector(".activeTab") as HTMLElement;
+        activedTab && activedTab.classList.remove("activeTab");
+        tabs[activeTab].classList.add("activeTab");
+    }, [activeTab]);
     return (
         <main>
             <article className="profile relative">
@@ -54,8 +49,8 @@ const Profile = () => {
                 <div className="wrapper">
                     <section>
                         <div className="profile_info">
-                            <div className="profile_media max-[1366px]:mt-10">
-                                <div className="profile_image w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white"></div>
+                            <div className="profile_media">
+                                <div className="profile_image"></div>
                                 <h4 className="text-center text-xl mt-8 font-bold">{currentUser?.name}</h4>
                             </div>
                             <div className="profile_bio">
@@ -68,18 +63,20 @@ const Profile = () => {
                     <section>
                         <div className="flex justify-center space-x-4">
                             {userTabs.map((tab: string, index: number) => (
-                                <span key={index} className={`tab${index + 1} font-semibold antialiased tracking-wide text-slate-300 cursor-pointer`} onClick={() => toggleTab(index + 1)}>
+                                <span key={index} className={`user_tab tab${index} font-semibold antialiased tracking-wide text-slate-300 cursor-pointer`} onClick={() => setActiveTab(index)}>
                                     {lang === "en" ? capitalize(tab) : t(tab)}
                                 </span>
                             ))}
                         </div>
                     </section>
                     <hr className="my-6 " />
-                    <div className="product_grid">
-                        {sampleProducts.map((product: productCardProps, index: number) => (
-                            <ProductCard product={product.product} key={index} />
-                        ))}
-                    </div>
+                    <section>
+                        <div className="product_grid">
+                            {sampleProducts.map((product: productCardProps, index: number) => (
+                                <ProductCard product={product.product} key={index} />
+                            ))}
+                        </div>
+                    </section>
                 </div>
             </article>
         </main>

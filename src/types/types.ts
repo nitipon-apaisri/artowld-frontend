@@ -6,6 +6,7 @@ type dropdownProps = { children: React.ReactNode };
 type contextChildren = { children: React.ReactNode };
 type signInButtonProps = { width?: string; px?: string; py?: string };
 type signUpButtonProps = { width?: string; px?: string; py?: string };
+type sidebarProps = { isSidebarToggle?: boolean };
 type registerProps = {
     firstName: string;
     lastName: string;
@@ -63,4 +64,5 @@ export type {
     NavType,
     RouterType,
     productCardProps,
+    sidebarProps,
 };

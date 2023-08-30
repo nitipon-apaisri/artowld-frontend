@@ -1523,6 +1523,31 @@ input:focus{
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+@media (max-width: 1366px){
+  .profile_media{
+    margin-top: 2.5rem;
+  }
+}
+
+.profile_image{
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 1 / 1;
+  width: 15rem;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+  outline-style: solid;
+  outline-width: 10px;
+  outline-color: #fff;
+}
+
+@media (max-width: 1366px){
+  .profile_image{
+    width: 10rem;
+  }
+}
+
 .product_grid{
   margin-top: 2.5rem;
   display: grid;
