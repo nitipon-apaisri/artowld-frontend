@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import CardOfTheDay from "../components/CardOfTheDay";
+import CardOfTheDay from "../components/card/CardOfTheDay";
 import TrendingCreators from "../components/TrendingCreators";
 import TopCreators from "../components/TopCreators";
 import RisingStars from "../components/RisingStar";

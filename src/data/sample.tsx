@@ -106,5 +106,6 @@ const sampleProducts: productCardProps[] = [
         },
     },
 ];
-
-export { sampleCreators, sampleProducts };
+const bio: string =
+    "ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat";
+export { sampleCreators, sampleProducts, bio };

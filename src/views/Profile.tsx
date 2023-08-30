@@ -5,10 +5,12 @@ import { AppContextType, UserContextType, UserType, productCardProps } from "../
 import { AppContext } from "../contexts/AppContext";
 import { UserContext } from "../contexts/UserContext";
 import { useTranslation } from "react-i18next";
-import ProductCard from "../components/Card/ProductCard";
-import { sampleProducts } from "../data/sample";
+import ProductCard from "../components/card/ProductCard";
+import { bio, sampleProducts } from "../data/sample";
 import { useParams } from "react-router-dom";
 import Api from "../services/api";
+import UserBio from "../components/profile/UserBio";
+import ExternalLinks from "../components/profile/ExternalLinks";
 
 const Profile = () => {
     const api = useMemo(() => new Api(), []);
@@ -27,27 +29,7 @@ const Profile = () => {
         },
         [api]
     );
-    const ProfileBio = () => {
-        return (
-            <div className="profile_bio_content mt-10 max-h-20 overflow-auto no-scrollbar">
-                <p className="text-slate-400 text-sm font-medium antialiased tracking-wide">
-                    ornare arcu dui vivamus arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet
-                    venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat
-                </p>
-            </div>
-        );
-    };
-    const ExternalLinks = () => {
-        return (
-            <div className="external_links_wrapper flex justify-end">
-                <div className="external_links ">
-                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
-                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
-                    <div className="w-8 aspect-square bg-slate-400 rounded-full"></div>
-                </div>
-            </div>
-        );
-    };
+
     useEffect(() => {
         // Change active tab
         const tabs = document.querySelectorAll(".user_tab") as NodeListOf<HTMLElement>;
@@ -79,7 +61,7 @@ const Profile = () => {
                             </div>
                             <div className="profile_bio">
                                 <ExternalLinks />
-                                <ProfileBio />
+                                <UserBio bio={bio} />
                             </div>
                         </div>
                     </section>
