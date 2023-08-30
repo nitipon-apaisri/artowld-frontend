@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContextType, UserContextType, sidebarProps } from "../types/types";
 import nav from "../modules/nav";
 import { Link } from "react-router-dom";
@@ -13,6 +13,11 @@ const Sidebar: React.FC<sidebarProps> = ({ isSidebarToggle }) => {
     const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
     const { t } = useTranslation();
     const [showLanguages, setShowLanguages] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (isSidebarToggle) setShowLanguages(false);
+    }, [isSidebarToggle]);
+
     return (
         <aside
             className={`fixed h-full ${isSidebarToggle ? " z-[999]" : "-z-[2]"} right-0 ${

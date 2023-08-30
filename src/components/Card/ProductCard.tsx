@@ -1,7 +1,9 @@
 import React from "react";
 import { productCardProps } from "../../types/types";
+import { useTranslation } from "react-i18next";
 
 const ProductCard: React.FC<productCardProps> = ({ product }) => {
+    const { t } = useTranslation();
     return (
         <div className="product_card_wrapper p-4 border border-[#EBEBEB] rounded-2xl">
             <div className="max-w-full aspect-square bg-slate-500 rounded-2xl"></div>
@@ -12,7 +14,7 @@ const ProductCard: React.FC<productCardProps> = ({ product }) => {
                         <h5 className="text-sm font-semibold">{product.title}</h5>
                     </div>
                     <div>
-                        <p>Price</p>
+                        <p className="text-sm">{t("price")}</p>
                         <h5 className="text-sm font-semibold text-right">{product.price} THB</h5>
                     </div>
                 </div>

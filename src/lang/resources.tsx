@@ -29,6 +29,7 @@ const resources = {
             created: "Created",
             collected: "Collected",
             favorite: "Favorite",
+            price: "Price",
         },
     },
     th: {
@@ -61,6 +62,7 @@ const resources = {
             created: "ผลงานที่สร้าง",
             collected: "สะสม",
             favorite: "ชื่นชอบ",
+            price: "ราคา",
         },
     },
 };
