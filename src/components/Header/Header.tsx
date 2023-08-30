@@ -1,47 +1,27 @@
 import { useContext, useEffect, useState } from "react";
-import logo from "../assets/images/logo.svg";
-import { useTranslation } from "react-i18next";
+import logo from "../../assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark, faLanguage } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../contexts/UserContext";
-import { AppContextType, UserContextType } from "../types/types";
-import SignInButton from "./shareComponents/button/SignInButton";
-import UserDropDown from "./shareComponents/dropdown/UserDropDown";
-import LanguageDropdown from "./shareComponents/dropdown/LanguageDropdown";
-import { AppContext } from "../contexts/AppContext";
-import SignUpButton from "./shareComponents/button/SignUpButton";
-import nav from "../modules/nav";
-import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { AppContextType } from "../../types/types";
+import { AppContext } from "../../contexts/AppContext";
+import Sidebar from "../Sidebar";
+import Navigation from "./Navigation";
 
 const Header = () => {
-    const { t } = useTranslation();
-    const { currentUser } = useContext(UserContext) as UserContextType;
     const { isBreakpoint } = useContext(AppContext) as AppContextType;
-    const [userDropdown, setUserDropdown] = useState<boolean>(false);
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
-    const [languageDropdown, setLanguageDropdown] = useState<boolean>(false);
-    const toggleUserDropdown = () => {
-        setUserDropdown(!userDropdown);
-        setLanguageDropdown(false);
-    };
+
     const toggleSidebar = () => {
         setIsSidebarToggle(!isSidebarToggle);
         document.body.style.overflow = "hidden";
         if (isSidebarToggle) document.body.style.overflow = "auto";
     };
 
-    const toggleLanguageDropdown = () => {
-        setUserDropdown(false);
-        setLanguageDropdown(!languageDropdown);
-    };
-
     useEffect(() => {
         if (!isBreakpoint) {
             setIsSidebarToggle(false);
-            setLanguageDropdown(false);
         }
-    }, [isSidebarToggle, isBreakpoint]);
+    }, [isBreakpoint]);
     return (
         <header>
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
@@ -50,7 +30,7 @@ const Header = () => {
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
-                <div className="menu_and_user flex flex-row items-center ">
+                {/* <div className="menu_and_user flex flex-row items-center ">
                     {!isBreakpoint && (
                         <>
                             <nav className={`md:mr-4`}>
@@ -83,7 +63,8 @@ const Header = () => {
                             )}
                         </>
                     )}
-                </div>
+                </div> */}
+                <Navigation />
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} />
         </header>
