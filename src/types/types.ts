@@ -35,10 +35,10 @@ interface AppContextType {
     changeLanguage: (lang: string) => void;
 }
 interface UserType {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
+    id?: string;
+    name?: string;
+    email?: string;
+    role?: string;
 }
 interface NavType {
     name: string;

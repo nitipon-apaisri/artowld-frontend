@@ -3,7 +3,6 @@ import { AppContextType, UserContextType } from "../../types/types";
 import { AppContext } from "../../contexts/AppContext";
 import { useContext, useEffect, useState } from "react";
 import nav from "../../modules/nav";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage } from "@fortawesome/free-solid-svg-icons";
 import LanguageDropdown from "../shareComponents/dropdown/LanguageDropdown";

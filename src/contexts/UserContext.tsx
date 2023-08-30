@@ -7,7 +7,7 @@ const UserContextProvider = ({ children }: contextChildren) => {
     const api = useMemo(() => new Api(), []);
     const [token, setToken] = useState<string | null>(null);
     const [currentUser, setCurrentUser] = useState<UserType | null>(null);
-    const getUser = useCallback(
+    const getUserById = useCallback(
         async (id: string) => {
             const res = await api.getUserById(id).then((res) => {
                 setCurrentUser(res.data);
@@ -24,8 +24,8 @@ const UserContextProvider = ({ children }: contextChildren) => {
         if (token) {
             setToken(token);
         }
-        if (userId && currentUser === null) getUser(userId as string);
-    }, [getUser, currentUser]);
+        if (userId && currentUser === null) getUserById(userId as string);
+    }, [getUserById, currentUser]);
 
     const signIn = async (user: object, rememberMe: boolean) => {
         const res = await api
