@@ -30,40 +30,6 @@ const Header = () => {
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
-                {/* <div className="menu_and_user flex flex-row items-center ">
-                    {!isBreakpoint && (
-                        <>
-                            <nav className={`md:mr-4`}>
-                                <ul className="flex flex-row space-x-6 font-medium tracking-wider">
-                                    {nav.map((item, index) => (
-                                        <li key={index}>
-                                            <Link to={item.path}>
-                                                <span className="px-4">{t(item.name)}</span>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
-                            <div className="flex flex-row items-center space-x-4">
-                                <div className="relative">
-                                    <FontAwesomeIcon icon={faLanguage} size="xl" className="cursor-pointer" onClick={toggleLanguageDropdown} />
-                                    {languageDropdown && <LanguageDropdown />}
-                                </div>
-                            </div>
-                            {currentUser !== null ? (
-                                <div className="relative">
-                                    <div className="user md:block hidden bg-slate-500 rounded-full w-10 h-10 ml-10 cursor-pointer" onClick={toggleUserDropdown}></div>
-                                    {userDropdown && <UserDropDown />}
-                                </div>
-                            ) : (
-                                <>
-                                    <SignUpButton />
-                                    <SignInButton />
-                                </>
-                            )}
-                        </>
-                    )}
-                </div> */}
                 <Navigation />
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} />
