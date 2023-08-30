@@ -75,7 +75,7 @@ const Profile = () => {
                         </div>
                     </section>
                     <hr className="my-6 " />
-                    <div className="w-full grid grid-cols-5 grid-flow-row gap-6 hide_scrollbar mt-10">
+                    <div className="product_grid">
                         {sampleProducts.map((product: productCardProps, index: number) => (
                             <ProductCard product={product.product} key={index} />
                         ))}

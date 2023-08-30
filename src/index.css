@@ -127,6 +127,9 @@ input:focus {
 .activeTab {
     @apply text-black;
 }
+.product_grid {
+    @apply w-full grid grid-cols-5 grid-flow-row gap-6 hide_scrollbar mt-10;
+}
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -135,7 +138,26 @@ input:focus {
         transform: rotate(360deg);
     }
 }
-
+@media only screen and (max-width: 100rem) {
+    .product_grid {
+        @apply grid-cols-4;
+    }
+}
+@media only screen and (max-width: 80rem) {
+    .product_grid {
+        @apply grid-cols-3;
+    }
+}
+@media only screen and (max-width: 60rem) {
+    .product_grid {
+        @apply grid-cols-2;
+    }
+}
+@media only screen and (max-width: 40rem) {
+    .product_grid {
+        @apply grid-cols-1;
+    }
+}
 @media only screen and (max-width: 880px) {
     .profile_info {
         @apply flex-col space-x-0 space-y-4 -mt-[120px];
