@@ -101,7 +101,12 @@ b {
 input:focus {
     @apply outline-primary;
 }
-
+.loader_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .loader {
     @apply border-[5px] border-primary;
     width: 48px;

@@ -12,6 +12,7 @@ import Api from "../services/api";
 import UserBio from "../components/profile/UserBio";
 import ExternalLinks from "../components/profile/ExternalLinks";
 import { Link } from "react-router-dom";
+import Loader from "../components/shareComponents/Loader";
 
 const Profile = () => {
     const { userId } = useParams<{ userId: string }>();
@@ -23,7 +24,7 @@ const Profile = () => {
     const { currentUser } = useContext(UserContext) as UserContextType;
     const [userProfile, setUserProfile] = useState<UserType | null>(null);
     const [products, setProducts] = useState<productCardProps[]>([]);
-
+    const [loading, setLoading] = useState<boolean>(false);
     const getUserById = useCallback(
         async (id: string) => {
             const res = await api.getUserById(id).then((res) => {
@@ -38,6 +39,12 @@ const Profile = () => {
         const activedTab = document.querySelector(".activeTab") as HTMLElement;
         activedTab && activedTab.classList.remove("activeTab");
         tabs[tabIndex].classList.add("activeTab");
+        setLoading(true);
+    };
+    const hideLoader = () => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     };
     useEffect(() => {
         // Change active tab
@@ -46,12 +53,15 @@ const Profile = () => {
         switch (true) {
             case tabIndex === 0:
                 setProducts(sampleProducts);
+                hideLoader();
                 break;
             case tabIndex === 1:
                 setProducts(sampleCollectedProducts);
+                hideLoader();
                 break;
             case tabIndex === 2:
                 setProducts(sampleProducts);
+                hideLoader();
                 break;
             default:
         }
@@ -98,10 +108,16 @@ const Profile = () => {
                     </section>
                     <hr className="my-6 " />
                     <section>
-                        <div className="product_grid">
-                            {products.map((product: productCardProps, index: number) => (
-                                <ProductCard product={product.product} key={index} />
-                            ))}
+                        <div className="min-h-[800px] relative">
+                            {loading ? (
+                                <Loader />
+                            ) : (
+                                <div className="product_grid">
+                                    {products.map((product: productCardProps, index: number) => (
+                                        <ProductCard product={product.product} key={index} />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </section>
                 </div>
