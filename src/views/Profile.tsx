@@ -7,7 +7,7 @@ import { UserContext } from "../contexts/UserContext";
 import { useTranslation } from "react-i18next";
 import ProductCard from "../components/card/ProductCard";
 import { bio, sampleCollectedProducts, sampleProducts } from "../data/sample";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Api from "../services/api";
 import UserBio from "../components/profile/UserBio";
 import ExternalLinks from "../components/profile/ExternalLinks";
@@ -17,9 +17,9 @@ import Loader from "../components/shareComponents/Loader";
 const Profile = () => {
     const { userId } = useParams<{ userId: string }>();
     const location = useLocation();
+    const navigate = useNavigate();
     const api = useMemo(() => new Api(), []);
     const { t } = useTranslation();
-
     const { isBreakpoint, lang } = useContext(AppContext) as AppContextType;
     const { currentUser } = useContext(UserContext) as UserContextType;
     const [userProfile, setUserProfile] = useState<UserType | null>(null);
@@ -27,9 +27,15 @@ const Profile = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const getUserById = useCallback(
         async (id: string) => {
-            const res = await api.getUserById(id).then((res) => {
-                return res.data;
-            });
+            const res = await api
+                .getUserById(id)
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                    return null;
+                });
             return res;
         },
         [api]
@@ -68,22 +74,31 @@ const Profile = () => {
         }, 1000);
     };
     useEffect(() => {
-        const getUser = async () => {
-            const res = await getUserById(userId as string);
-            setUserProfile(res as UserType);
-        };
-        if (userId !== undefined) {
-            getUser();
-        } else {
-            setUserProfile(currentUser);
+        const loggedInUserId = localStorage.getItem("userId") || sessionStorage.getItem("userId");
+        const initialTab = () => {
             const tabIndex = userTabs.findIndex((tab) => tab === location.pathname.split("/")[3]);
             if (tabIndex === -1) {
                 changeTab(0);
             } else {
                 changeTab(tabIndex);
             }
+        };
+        const getUser = async () => {
+            const res = await getUserById(userId as string);
+            setUserProfile(res as UserType);
+        };
+        if (userId !== undefined) {
+            getUser();
+            initialTab();
+        } else {
+            if (loggedInUserId === null) {
+                navigate("/user/signin");
+            } else {
+                setUserProfile(currentUser);
+                initialTab();
+            }
         }
-    }, [currentUser, userId, getUserById, location, loadProducts, changeTab]);
+    }, [currentUser, userId, getUserById, location, loadProducts, changeTab, navigate]);
 
     return (
         <main>
