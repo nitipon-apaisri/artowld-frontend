@@ -6,11 +6,12 @@ import { AppContext } from "../contexts/AppContext";
 import { UserContext } from "../contexts/UserContext";
 import { useTranslation } from "react-i18next";
 import ProductCard from "../components/card/ProductCard";
-import { bio, sampleProducts } from "../data/sample";
+import { bio, sampleCollectedProducts, sampleProducts } from "../data/sample";
 import { useLocation, useParams } from "react-router-dom";
 import Api from "../services/api";
 import UserBio from "../components/profile/UserBio";
 import ExternalLinks from "../components/profile/ExternalLinks";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
     const { userId } = useParams<{ userId: string }>();
@@ -22,6 +23,7 @@ const Profile = () => {
     const { currentUser } = useContext(UserContext) as UserContextType;
     const [userProfile, setUserProfile] = useState<UserType | null>(null);
     const [products, setProducts] = useState<productCardProps[]>([]);
+
     const getUserById = useCallback(
         async (id: string) => {
             const res = await api.getUserById(id).then((res) => {
@@ -32,7 +34,6 @@ const Profile = () => {
         [api]
     );
     const changeTab = (tabIndex: number) => {
-        window.history.pushState({}, "", `/user/profile/${userTabs[tabIndex]}`);
         const tabs = document.querySelectorAll(".user_tab") as NodeListOf<HTMLElement>;
         const activedTab = document.querySelector(".activeTab") as HTMLElement;
         activedTab && activedTab.classList.remove("activeTab");
@@ -42,6 +43,18 @@ const Profile = () => {
         // Change active tab
         const tabIndex = userTabs.findIndex((tab) => tab === location.pathname.split("/")[3]);
         changeTab(tabIndex);
+        switch (true) {
+            case tabIndex === 0:
+                setProducts(sampleProducts);
+                break;
+            case tabIndex === 1:
+                setProducts(sampleCollectedProducts);
+                break;
+            case tabIndex === 2:
+                setProducts(sampleProducts);
+                break;
+            default:
+        }
     }, [location]);
 
     useEffect(() => {
@@ -56,9 +69,6 @@ const Profile = () => {
         }
     }, [currentUser, userId, getUserById]);
 
-    useEffect(() => {
-        setProducts(sampleProducts);
-    }, [userId, location]);
     return (
         <main>
             <article className="profile relative">
@@ -81,7 +91,7 @@ const Profile = () => {
                         <div className="flex justify-center space-x-4">
                             {userTabs.map((tab: string, index: number) => (
                                 <span key={index} className={`user_tab tab${index} font-semibold antialiased tracking-wide text-slate-300 cursor-pointer`} onClick={() => changeTab(index)}>
-                                    {lang === "en" ? capitalize(tab) : t(tab)}
+                                    <Link to={`/user/profile/${tab}`}>{lang === "en" ? capitalize(tab) : t(tab)}</Link>
                                 </span>
                             ))}
                         </div>
