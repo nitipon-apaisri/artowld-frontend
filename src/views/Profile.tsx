@@ -34,22 +34,7 @@ const Profile = () => {
         },
         [api]
     );
-    const changeTab = (tabIndex: number) => {
-        const tabs = document.querySelectorAll(".user_tab") as NodeListOf<HTMLElement>;
-        const activedTab = document.querySelector(".activeTab") as HTMLElement;
-        activedTab && activedTab.classList.remove("activeTab");
-        tabs[tabIndex].classList.add("activeTab");
-        setLoading(true);
-    };
-    const hideLoader = () => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    };
-    useEffect(() => {
-        // Change active tab
-        const tabIndex = userTabs.findIndex((tab) => tab === location.pathname.split("/")[3]);
-        changeTab(tabIndex);
+    const loadProducts = useCallback((tabIndex: number) => {
         switch (true) {
             case tabIndex === 0:
                 setProducts(sampleProducts);
@@ -65,8 +50,23 @@ const Profile = () => {
                 break;
             default:
         }
-    }, [location]);
-
+    }, []);
+    const changeTab = useCallback(
+        (tabIndex: number) => {
+            const tabs = document.querySelectorAll(".user_tab") as NodeListOf<HTMLElement>;
+            const activedTab = document.querySelector(".activeTab") as HTMLElement;
+            activedTab && activedTab.classList.remove("activeTab");
+            tabs[tabIndex].classList.add("activeTab");
+            setLoading(true);
+            loadProducts(tabIndex);
+        },
+        [loadProducts]
+    );
+    const hideLoader = () => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    };
     useEffect(() => {
         const getUser = async () => {
             const res = await getUserById(userId as string);
@@ -76,8 +76,14 @@ const Profile = () => {
             getUser();
         } else {
             setUserProfile(currentUser);
+            const tabIndex = userTabs.findIndex((tab) => tab === location.pathname.split("/")[3]);
+            if (tabIndex === -1) {
+                changeTab(0);
+            } else {
+                changeTab(tabIndex);
+            }
         }
-    }, [currentUser, userId, getUserById]);
+    }, [currentUser, userId, getUserById, location, loadProducts, changeTab]);
 
     return (
         <main>
