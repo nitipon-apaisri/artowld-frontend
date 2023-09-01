@@ -7,7 +7,6 @@ import { AppContext } from "../../contexts/AppContext";
 import Sidebar from "../Sidebar";
 import Navigation from "./Navigation";
 import SearchInput from "../Input/SearchInput";
-import SearchButton from "../button/SearchButton";
 
 const Header = () => {
     const { isBreakpoint, isSmallScreen } = useContext(AppContext) as AppContextType;
@@ -30,12 +29,13 @@ const Header = () => {
                 <div className="logo flex flex-row items-center space-x-4">
                     {isBreakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
                     <img src={logo} alt="App-logo" />
-                    <h1 className="font-bold tracking-wider">ARTOWLD</h1>
+                    {!isSmallScreen && <h1 className="font-bold tracking-wider">ARTOWLD</h1>}
                 </div>
-                {isSmallScreen ? <SearchButton /> : <SearchInput />}
+                {/* {isSmallScreen ? <SearchButton /> : <SearchInput />} */}
+                <SearchInput />
                 {!isBreakpoint && <Navigation />}
             </div>
-            <Sidebar isSidebarToggle={isSidebarToggle} />
+            <Sidebar isSidebarToggle={isSidebarToggle} toggleSidebar={toggleSidebar} />
         </header>
     );
 };

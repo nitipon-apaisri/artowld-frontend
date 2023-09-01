@@ -103,7 +103,7 @@ const Profile = () => {
                     <section>
                         <div className="profile_info">
                             <div className="profile_media">
-                                <div className="profile_image"></div>
+                                <div className="user_profile_image"></div>
                                 <h4 className="text-center text-xl mt-8 font-bold">{userProfile?.name}</h4>
                             </div>
                             <div className="profile_bio">

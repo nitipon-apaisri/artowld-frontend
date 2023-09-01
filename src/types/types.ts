@@ -6,7 +6,7 @@ type dropdownProps = { children: React.ReactNode };
 type contextChildren = { children: React.ReactNode };
 type signInButtonProps = { width?: string; px?: string; py?: string };
 type signUpButtonProps = { width?: string; px?: string; py?: string };
-type sidebarProps = { isSidebarToggle?: boolean };
+type sidebarProps = { isSidebarToggle?: boolean; toggleSidebar?: () => void };
 type userBioProps = { bio?: string };
 type externalLinkProps = { href?: string[] };
 type registerProps = {

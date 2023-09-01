@@ -139,7 +139,7 @@ input:focus {
 .profile_media {
     @apply max-[1366px]:mt-10;
 }
-.profile_image {
+.user_profile_image {
     @apply w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white;
 }
 .product_grid {
@@ -180,10 +180,13 @@ input:focus {
         @apply space-x-1;
     }
     .search_input_wrapper {
-        @apply w-[200px];
+        @apply w-[240px];
     }
 }
 @media only screen and (max-width: 60rem) {
+    .search_input_wrapper {
+        @apply w-[180px];
+    }
     .product_grid {
         @apply grid-cols-2;
     }

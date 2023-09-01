@@ -25,8 +25,8 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         window.addEventListener("resize", updateSize);
         updateSize();
         if (innerWidth < breakpoints) setIsBreakpoint(true);
-        if (innerWidth < smallScreen) setIsSmallScreen(true);
         else setIsBreakpoint(false);
+        if (innerWidth < smallScreen) setIsSmallScreen(true);
     }, [innerWidth]);
     const changeLanguage = (lang: string) => {
         localStorage.setItem("lang", lang);

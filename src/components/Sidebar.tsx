@@ -1,23 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContextType, UserContextType, sidebarProps } from "../types/types";
 import nav from "../modules/nav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useTranslation } from "react-i18next";
 import { AppContext } from "../contexts/AppContext";
 import SignInButton from "./shareComponents/button/SignInButton";
 import SignUpButton from "./shareComponents/button/SignUpButton";
 
-const Sidebar: React.FC<sidebarProps> = ({ isSidebarToggle }) => {
+const Sidebar: React.FC<sidebarProps> = ({ isSidebarToggle, toggleSidebar }) => {
+    const navigate = useNavigate();
     const { currentUser } = useContext(UserContext) as UserContextType;
     const { lang, changeLanguage } = useContext(AppContext) as AppContextType;
     const { t } = useTranslation();
     const [showLanguages, setShowLanguages] = useState<boolean>(false);
 
+    const onClickSidebar = () => {
+        if (toggleSidebar) toggleSidebar();
+    };
+    const toProfile = () => {
+        navigate("/user/profile");
+        onClickSidebar();
+    };
+
     useEffect(() => {
         if (isSidebarToggle) setShowLanguages(false);
     }, [isSidebarToggle]);
-
     return (
         <aside
             className={`fixed h-full ${isSidebarToggle ? " z-[999]" : "-z-[2]"} right-0 ${
@@ -28,7 +36,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isSidebarToggle }) => {
                 <nav>
                     <ul className="flex flex-col space-y-6 font-medium tracking-wider">
                         {nav.map((item, index) => (
-                            <li key={index}>
+                            <li key={index} onClick={onClickSidebar}>
                                 <Link to={item.path}>{t(item.name)}</Link>
                             </li>
                         ))}
@@ -37,7 +45,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isSidebarToggle }) => {
                 {currentUser !== null && (
                     <>
                         <hr className="mt-4" />
-                        <div className="flex flex-row items-center space-x-4">
+                        <div className="flex flex-row items-center space-x-4 cursor-pointer" onClick={toProfile}>
                             <div className="user block bg-slate-500 rounded-full w-10 h-10  cursor-pointer my-4 shadow-custom2"></div>
                             <h5 className="font-semibold">{currentUser?.name}</h5>
                         </div>
