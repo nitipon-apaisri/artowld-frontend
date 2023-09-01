@@ -1597,6 +1597,21 @@ input:focus{
   justify-content: center;
 }
 
+.marketplace_header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.marketplace_header h1{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
