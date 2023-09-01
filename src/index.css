@@ -161,6 +161,11 @@ input:focus {
         @apply grid-cols-4;
     }
 }
+@media only screen and (min-width: 90rem) {
+    .search_input_wrapper {
+        @apply w-[40%];
+    }
+}
 @media only screen and (max-width: 80rem) {
     .menu_and_user nav ul {
         @apply space-x-4;

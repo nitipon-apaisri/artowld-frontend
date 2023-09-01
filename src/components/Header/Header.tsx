@@ -9,7 +9,7 @@ import Navigation from "./Navigation";
 import SearchInput from "../Input/SearchInput";
 
 const Header = () => {
-    const { isBreakpoint, isSmallScreen } = useContext(AppContext) as AppContextType;
+    const { isBreakpoint } = useContext(AppContext) as AppContextType;
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
 
     const toggleSidebar = () => {
@@ -29,7 +29,7 @@ const Header = () => {
                 <div className="logo flex flex-row items-center space-x-4">
                     {isBreakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
                     <img src={logo} alt="App-logo" />
-                    {!isSmallScreen && <h1 className="font-bold tracking-wider">ARTOWLD</h1>}
+                    {!isBreakpoint && <h1 className="font-bold tracking-wider">ARTOWLD</h1>}
                 </div>
                 {/* {isSmallScreen ? <SearchButton /> : <SearchInput />} */}
                 <SearchInput />
