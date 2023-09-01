@@ -74,7 +74,6 @@ const Profile = () => {
         }, 1000);
     };
     useEffect(() => {
-        const loggedInUserId = localStorage.getItem("userId") || sessionStorage.getItem("userId");
         const initialTab = () => {
             const tabIndex = userTabs.findIndex((tab) => tab === location.pathname.split("/")[3]);
             if (tabIndex === -1) {
@@ -91,12 +90,8 @@ const Profile = () => {
             getUser();
             initialTab();
         } else {
-            if (loggedInUserId === null) {
-                navigate("/user/signin");
-            } else {
-                setUserProfile(currentUser);
-                initialTab();
-            }
+            setUserProfile(currentUser);
+            initialTab();
         }
     }, [currentUser, userId, getUserById, location, loadProducts, changeTab, navigate]);
 
