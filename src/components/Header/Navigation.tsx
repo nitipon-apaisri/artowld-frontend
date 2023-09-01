@@ -35,7 +35,7 @@ const Navigation = () => {
             {!isBreakpoint && (
                 <>
                     <nav className={`md:mr-4`}>
-                        <ul className="flex flex-row space-x-6 font-medium tracking-wider">
+                        <ul>
                             {nav.map((item, index) => (
                                 <li key={index}>
                                     <a href={item.path}>

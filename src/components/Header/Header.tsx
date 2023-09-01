@@ -9,7 +9,7 @@ import Navigation from "./Navigation";
 import SearchInput from "../Input/SearchInput";
 
 const Header = () => {
-    const { isBreakpoint } = useContext(AppContext) as AppContextType;
+    const { isBreakpoint, isSmallScreen } = useContext(AppContext) as AppContextType;
     const [isSidebarToggle, setIsSidebarToggle] = useState<boolean>(false);
 
     const toggleSidebar = () => {
@@ -25,14 +25,14 @@ const Header = () => {
     }, [isBreakpoint]);
     return (
         <header>
-            <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0`}>
+            <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0 space-x-4`}>
                 <div className="logo flex flex-row items-center space-x-4">
                     {isBreakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
-                <SearchInput />
-                <Navigation />
+                {!isSmallScreen && <SearchInput />}
+                {!isBreakpoint && <Navigation />}
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} />
         </header>

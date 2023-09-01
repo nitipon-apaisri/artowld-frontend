@@ -6,10 +6,11 @@ const AppContext = createContext<AppContextType | null>(null);
 const AppContxtProvider = ({ children }: contextChildren) => {
     const { i18n } = useTranslation();
     const breakpoints = 880;
+    const smallScreen = 480;
     const [lang, setLang] = useState<string>("en");
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [isBreakpoint, setIsBreakpoint] = useState<boolean>(false);
-
+    const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
@@ -24,6 +25,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         window.addEventListener("resize", updateSize);
         updateSize();
         if (innerWidth < breakpoints) setIsBreakpoint(true);
+        if (innerWidth < smallScreen) setIsSmallScreen(true);
         else setIsBreakpoint(false);
     }, [innerWidth]);
     const changeLanguage = (lang: string) => {
@@ -32,7 +34,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         setLang(lang);
         window.location.reload();
     };
-    return <AppContext.Provider value={{ lang, isBreakpoint, changeLanguage }}>{children}</AppContext.Provider>;
+    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, changeLanguage }}>{children}</AppContext.Provider>;
 };
 
 export { AppContext, AppContxtProvider };
