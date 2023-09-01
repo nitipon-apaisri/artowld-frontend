@@ -141,6 +141,9 @@ input:focus {
 .product_grid {
     @apply w-full grid grid-cols-5 grid-flow-row gap-6 hide_scrollbar mt-10;
 }
+.search_input_wrapper {
+    @apply flex items-center justify-center relative;
+}
 @keyframes rotation {
     0% {
         transform: rotate(0deg);

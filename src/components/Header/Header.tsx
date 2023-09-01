@@ -6,6 +6,7 @@ import { AppContextType } from "../../types/types";
 import { AppContext } from "../../contexts/AppContext";
 import Sidebar from "../Sidebar";
 import Navigation from "./Navigation";
+import SearchInput from "../Input/SearchInput";
 
 const Header = () => {
     const { isBreakpoint } = useContext(AppContext) as AppContextType;
@@ -30,6 +31,7 @@ const Header = () => {
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
+                <SearchInput />
                 <Navigation />
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} />

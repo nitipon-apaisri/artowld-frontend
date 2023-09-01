@@ -12,6 +12,7 @@ import UserSignIn from "./views/UserSignIn.tsx";
 import { RouterType } from "./types/types.ts";
 import Profile from "./views/Profile.tsx";
 import RequireAuth from "./middleware/auth.tsx";
+import Marketplace from "./views/Marketplace.tsx";
 
 const routers: RouterType[] = [
     { path: "/", element: <LandingPage /> },
@@ -23,6 +24,7 @@ const routers: RouterType[] = [
     { path: "/:userId/profile/created", element: <Profile /> },
     { path: "/:userId/profile/collected", element: <Profile /> },
     { path: "/:userId/profile/favorite", element: <Profile /> },
+    { path: "/marketplace", element: <Marketplace /> },
 ];
 const privateRouters: RouterType[] = [{ path: "/user/profile", element: <Profile /> }];
 const oneTimeRouters: RouterType[] = [{ path: "/user/signin", element: <UserSignIn /> }];

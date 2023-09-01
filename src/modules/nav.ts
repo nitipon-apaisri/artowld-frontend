@@ -6,8 +6,8 @@ const nav: NavType[] = [
         path: "/",
     },
     {
-        name: "market",
-        path: "/market",
+        name: "marketplace",
+        path: "/marketplace",
     },
     {
         name: "stats",
