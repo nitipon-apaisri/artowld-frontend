@@ -8,10 +8,10 @@ const RequireAuth: React.FC<{ children: React.ReactElement }> = ({ children }) =
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
     const path = location.pathname.split("/");
     useEffect(() => {
-        if (path[2] === "signin") {
+        if (path[2] === "signin" && token) {
             navigate("/");
         }
-    }, [path, navigate]);
+    }, [path, navigate, token]);
     if (!token) {
         return <UserSignIn />;
     }
