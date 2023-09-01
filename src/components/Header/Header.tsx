@@ -7,6 +7,7 @@ import { AppContext } from "../../contexts/AppContext";
 import Sidebar from "../Sidebar";
 import Navigation from "./Navigation";
 import SearchInput from "../Input/SearchInput";
+import SearchButton from "../button/SearchButton";
 
 const Header = () => {
     const { isBreakpoint, isSmallScreen } = useContext(AppContext) as AppContextType;
@@ -31,7 +32,7 @@ const Header = () => {
                     <img src={logo} alt="App-logo" />
                     <h1 className="font-bold tracking-wider">ARTOWLD</h1>
                 </div>
-                {!isSmallScreen && <SearchInput />}
+                {isSmallScreen ? <SearchButton /> : <SearchInput />}
                 {!isBreakpoint && <Navigation />}
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} />
