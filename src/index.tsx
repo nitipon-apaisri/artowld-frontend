@@ -16,7 +16,6 @@ import RequireAuth from "./middleware/auth.tsx";
 const routers: RouterType[] = [
     { path: "/", element: <LandingPage /> },
     { path: "/user/registration", element: <UserRegisteration /> },
-    { path: "/user/signin", element: <UserSignIn /> },
     { path: "/user/profile/created", element: <Profile /> },
     { path: "/user/profile/collected", element: <Profile /> },
     { path: "/user/profile/favorite", element: <Profile /> },
@@ -26,6 +25,7 @@ const routers: RouterType[] = [
     { path: "/:userId/profile/favorite", element: <Profile /> },
 ];
 const privateRouters: RouterType[] = [{ path: "/user/profile", element: <Profile /> }];
+const oneTimeRouters: RouterType[] = [{ path: "/user/signin", element: <UserSignIn /> }];
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <BrowserRouter>
@@ -37,6 +37,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                                 <Route key={index} path={router.path} element={router.element} />
                             ))}
                             {privateRouters.map((router, index) => (
+                                <Route key={index} path={router.path} element={<RequireAuth>{router.element as React.ReactElement}</RequireAuth>} />
+                            ))}
+                            {oneTimeRouters.map((router, index) => (
                                 <Route key={index} path={router.path} element={<RequireAuth>{router.element as React.ReactElement}</RequireAuth>} />
                             ))}
                         </Routes>
