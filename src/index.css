@@ -149,10 +149,10 @@ input:focus {
     @apply flex items-center justify-center relative w-[400px];
 }
 .marketplace_header {
-    @apply flex flex-row items-center justify-between py-20;
+    @apply flex flex-row items-center justify-between;
 }
 .marketplace_header h1 {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold mt-20;
 }
 @keyframes rotation {
     0% {

@@ -1602,11 +1602,10 @@ input:focus{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
 }
 
 .marketplace_header h1{
+  margin-top: 5rem;
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 700;
