@@ -11,6 +11,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [isBreakpoint, setIsBreakpoint] = useState<boolean>(false);
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
+    const [isSearchInputFocus, setIsSearchInputFocus] = useState<boolean>(false);
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
@@ -40,6 +41,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
                     console.log("You clicked outside of me!");
+                    setIsSearchInputFocus(false);
                 }
             };
             document.addEventListener("mousedown", handleClickOutside);
@@ -48,7 +50,11 @@ const AppContxtProvider = ({ children }: contextChildren) => {
             };
         }, [ref]);
     };
-    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, changeLanguage, useOutSideClick }}>{children}</AppContext.Provider>;
+
+    const searchInputOnFocus = () => {
+        setIsSearchInputFocus(true);
+    };
+    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, isSearchInputFocus, changeLanguage, useOutSideClick, searchInputOnFocus }}>{children}</AppContext.Provider>;
 };
 
 export { AppContext, AppContxtProvider };
