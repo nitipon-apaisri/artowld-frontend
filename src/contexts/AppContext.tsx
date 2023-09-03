@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { RefObject, createContext, useEffect, useState } from "react";
 import { AppContextType, contextChildren } from "../types/types";
 import { useTranslation } from "react-i18next";
 
@@ -35,7 +35,20 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         setLang(lang);
         window.location.reload();
     };
-    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, changeLanguage }}>{children}</AppContext.Provider>;
+    const useOutSideClick = (ref: RefObject<HTMLDivElement>) => {
+        useEffect(() => {
+            const handleClickOutside = (event: MouseEvent) => {
+                if (ref.current && !ref.current.contains(event.target as Node)) {
+                    console.log("You clicked outside of me!");
+                }
+            };
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    };
+    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, changeLanguage, useOutSideClick }}>{children}</AppContext.Provider>;
 };
 
 export { AppContext, AppContxtProvider };

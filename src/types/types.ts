@@ -1,3 +1,5 @@
+import { RefObject } from "react";
+
 // type contextChildren = { children: React.ReactNode };
 type layoutProps = { children: React.ReactNode };
 type creatorCardProps = { username?: string; image?: { banner: string; profile: string } };
@@ -36,6 +38,7 @@ interface AppContextType {
     isBreakpoint: boolean;
     isSmallScreen: boolean;
     changeLanguage: (lang: string) => void;
+    useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;
 }
 interface UserType {
     id?: string;

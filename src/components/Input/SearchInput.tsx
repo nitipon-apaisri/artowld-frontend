@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SearchSuggesstion from "../shareComponents/dropdown/SearchSuggesstion";
 const SearchInput = () => {
     return (
         <div className="search_input_wrapper">
@@ -9,6 +10,7 @@ const SearchInput = () => {
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
+            <SearchSuggesstion />
         </div>
     );
 };

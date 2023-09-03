@@ -1611,6 +1611,22 @@ input:focus{
   font-weight: 700;
 }
 
+.search_suggestions_wrapper{
+  position: absolute;
+  left: 0px;
+  height: 15rem;
+  width: 100%;
+  --tw-translate-y: 8rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding: 1.5rem;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);

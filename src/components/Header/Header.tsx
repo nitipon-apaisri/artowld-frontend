@@ -33,6 +33,9 @@ const Header = () => {
                 </div>
                 {/* {isSmallScreen ? <SearchButton /> : <SearchInput />} */}
                 <SearchInput />
+                {/* <div className="relative w-full">
+                    <SearchSuggesstion />
+                </div> */}
                 {!isBreakpoint && <Navigation />}
             </div>
             <Sidebar isSidebarToggle={isSidebarToggle} toggleSidebar={toggleSidebar} />
