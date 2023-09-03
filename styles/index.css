@@ -568,6 +568,10 @@ video {
   top: 0px;
 }
 
+.top-16{
+  top: 4rem;
+}
+
 .top-\[100px\]{
   top: 100px;
 }
@@ -578,6 +582,10 @@ video {
 
 .top-\[calc\(50\%\+24px\)\]{
   top: calc(50% + 24px);
+}
+
+.top-12{
+  top: 3rem;
 }
 
 .-z-\[2\]{
@@ -1217,6 +1225,10 @@ video {
   transition-duration: 500ms;
 }
 
+.duration-100{
+  transition-duration: 100ms;
+}
+
 .ease-in-out{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1634,7 +1646,6 @@ input:focus{
 .search_suggestions_wrapper{
   position: absolute;
   left: 0px;
-  top: 4rem;
   width: 100%;
   border-radius: 0.5rem;
   border-width: 1px;
