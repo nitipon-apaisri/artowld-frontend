@@ -38,9 +38,12 @@ interface AppContextType {
     isBreakpoint: boolean;
     isSmallScreen: boolean;
     isSearchInputFocus: boolean;
+    searchHistory: object[];
+    searchResult: object[];
     changeLanguage: (lang: string) => void;
     useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;
     searchInputOnFocus: () => void;
+    onSearch: (value: string) => void;
 }
 interface UserType {
     id?: string;

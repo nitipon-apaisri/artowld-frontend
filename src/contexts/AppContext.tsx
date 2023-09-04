@@ -12,13 +12,20 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [isBreakpoint, setIsBreakpoint] = useState<boolean>(false);
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
     const [isSearchInputFocus, setIsSearchInputFocus] = useState<boolean>(false);
+    const [searchHistory, setSearchHistory] = useState<object[]>([]);
+    const [searchResult, setSearchResult] = useState<object[]>([]);
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
             setLang(lang);
             i18n.changeLanguage(lang);
         }
+        const searchHistoryData = localStorage.getItem("searchHistory");
+        if (searchHistoryData) {
+            setSearchHistory(JSON.parse(searchHistoryData));
+        }
     }, [i18n]);
+
     useEffect(() => {
         const updateSize = () => {
             setInnerWidth(window.innerWidth);
@@ -30,17 +37,18 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         if (innerWidth < smallScreen) setIsSmallScreen(true);
         else setIsSmallScreen(false);
     }, [innerWidth]);
+
     const changeLanguage = (lang: string) => {
         localStorage.setItem("lang", lang);
         i18n.changeLanguage(lang);
         setLang(lang);
         window.location.reload();
     };
+
     const useOutSideClick = (ref: RefObject<HTMLDivElement>) => {
         useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
-                    console.log("You clicked outside of me!");
                     setIsSearchInputFocus(false);
                 }
             };
@@ -54,7 +62,16 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const searchInputOnFocus = () => {
         setIsSearchInputFocus(true);
     };
-    return <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, isSearchInputFocus, changeLanguage, useOutSideClick, searchInputOnFocus }}>{children}</AppContext.Provider>;
+
+    const onSearch = (v: string) => {
+        console.log(v);
+        setSearchResult([{ name: "test" }]);
+    };
+    return (
+        <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, isSearchInputFocus, searchHistory, searchResult, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch }}>
+            {children}
+        </AppContext.Provider>
+    );
 };
 
 export { AppContext, AppContxtProvider };

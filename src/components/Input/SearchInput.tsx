@@ -8,9 +8,12 @@ const SearchInput = () => {
     const { searchInputOnFocus, useOutSideClick } = useContext(AppContext) as AppContextType;
     const wrapperRef = useRef<HTMLDivElement>(null);
     useOutSideClick(wrapperRef);
+    const onTypeSearch = (value: string) => {
+        console.log(value);
+    };
     return (
         <div className="search_input_wrapper" onFocus={searchInputOnFocus} ref={wrapperRef}>
-            <input type="text" className="border-slate-200 p-2 w-full rounded-lg" placeholder="Search" />
+            <input type="text" className="border-slate-200 p-2 w-full rounded-lg" placeholder="Search" onChange={(v) => onTypeSearch(v.target.value)} />
             <div className="absolute right-0">
                 <button type="button" className="hover:bg-transparent">
                     <FontAwesomeIcon icon={faSearch} />
