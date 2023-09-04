@@ -2,14 +2,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchSuggesstion from "../shareComponents/dropdown/SearchSuggesstion";
 import { AppContextType } from "../../types/types";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../contexts/AppContext";
 const SearchInput = () => {
     const { searchInputOnFocus, useOutSideClick } = useContext(AppContext) as AppContextType;
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const [timer, setTimer] = useState<number | null>(null);
     useOutSideClick(wrapperRef);
     const onTypeSearch = (value: string) => {
-        console.log(value);
+        if (value.length < 3) return;
+        if (timer) clearTimeout(timer);
+        setTimer(
+            setTimeout(() => {
+                console.log("searching...");
+            }, 1000)
+        );
     };
     return (
         <div className="search_input_wrapper" onFocus={searchInputOnFocus} ref={wrapperRef}>

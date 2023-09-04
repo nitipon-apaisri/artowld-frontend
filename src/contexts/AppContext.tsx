@@ -1,5 +1,5 @@
 import { RefObject, createContext, useEffect, useState } from "react";
-import { AppContextType, contextChildren } from "../types/types";
+import { AppContextType, contextChildren, productCardProps } from "../types/types";
 import { useTranslation } from "react-i18next";
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -11,9 +11,9 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [isBreakpoint, setIsBreakpoint] = useState<boolean>(false);
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
-    const [isSearchInputFocus, setIsSearchInputFocus] = useState<boolean>(false);
+    const [showSearchSuggesstions, setShowSearchSuggesstions] = useState<boolean>(false);
     const [searchHistory, setSearchHistory] = useState<object[]>([]);
-    const [searchResult, setSearchResult] = useState<object[]>([]);
+    const [searchResult, setSearchResult] = useState<productCardProps[]>([]);
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
@@ -23,6 +23,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         const searchHistoryData = localStorage.getItem("searchHistory");
         if (searchHistoryData) {
             setSearchHistory(JSON.parse(searchHistoryData));
+            setShowSearchSuggesstions(true);
         }
     }, [i18n]);
 
@@ -49,7 +50,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
-                    setIsSearchInputFocus(false);
+                    setShowSearchSuggesstions(false);
                 }
             };
             document.addEventListener("mousedown", handleClickOutside);
@@ -60,15 +61,24 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     };
 
     const searchInputOnFocus = () => {
-        setIsSearchInputFocus(true);
+        if (searchHistory.length > 0) setShowSearchSuggesstions(true);
     };
 
     const onSearch = (v: string) => {
         console.log(v);
-        setSearchResult([{ name: "test" }]);
+        const product = [
+            {
+                product: {
+                    creator: "Lorem Ipsum",
+                    title: "product 1",
+                    price: 0,
+                },
+            },
+        ];
+        setSearchResult(product);
     };
     return (
-        <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, isSearchInputFocus, searchHistory, searchResult, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch }}>
+        <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, searchHistory, searchResult, showSearchSuggesstions, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch }}>
             {children}
         </AppContext.Provider>
     );

@@ -37,9 +37,9 @@ interface AppContextType {
     lang: string;
     isBreakpoint: boolean;
     isSmallScreen: boolean;
-    isSearchInputFocus: boolean;
     searchHistory: object[];
-    searchResult: object[];
+    searchResult: productCardProps[];
+    showSearchSuggesstions: boolean;
     changeLanguage: (lang: string) => void;
     useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;
     searchInputOnFocus: () => void;
