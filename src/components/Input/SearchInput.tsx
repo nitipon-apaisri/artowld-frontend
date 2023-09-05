@@ -5,13 +5,13 @@ import { AppContextType } from "../../types/types";
 import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../contexts/AppContext";
 const SearchInput = () => {
-    const { searchInputOnFocus, useOutSideClick, onSearch, setShowSearchSuggesstions } = useContext(AppContext) as AppContextType;
+    const { searchInputOnFocus, useOutSideClick, onSearch, hideSearchSuggesstions } = useContext(AppContext) as AppContextType;
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [timer, setTimer] = useState<number | null>(null);
     const [searchQuery, setSearchQuery] = useState<string>("");
     useOutSideClick(wrapperRef);
     const onTypeSearch = (value: string) => {
-        if (value.length < 3) setShowSearchSuggesstions(false);
+        if (value.length < 3) hideSearchSuggesstions();
         setSearchQuery(value);
         if (value.length < 3) return;
         if (timer) clearTimeout(timer);

@@ -24,7 +24,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         const searchHistoryData = localStorage.getItem("searchHistory");
         if (searchHistoryData) {
             setSearchHistory(JSON.parse(searchHistoryData));
-            setShowSearchSuggesstions(true);
+            toggleOnSearchSuggesstions();
         }
     }, [i18n]);
 
@@ -39,7 +39,12 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         if (innerWidth < smallScreen) setIsSmallScreen(true);
         else setIsSmallScreen(false);
     }, [innerWidth]);
-
+    const toggleOnSearchSuggesstions = () => {
+        setShowSearchSuggesstions(true);
+    };
+    const hideSearchSuggesstions = () => {
+        setShowSearchSuggesstions(false);
+    };
     const changeLanguage = (lang: string) => {
         localStorage.setItem("lang", lang);
         i18n.changeLanguage(lang);
@@ -51,7 +56,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
-                    setShowSearchSuggesstions(false);
+                    hideSearchSuggesstions();
                 }
             };
             document.addEventListener("mousedown", handleClickOutside);
@@ -62,8 +67,8 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     };
 
     const searchInputOnFocus = () => {
-        if (searchHistory.length > 0) setShowSearchSuggesstions(true);
-        if (searchResult.length > 0) setShowSearchSuggesstions(true);
+        if (searchHistory.length > 0) toggleOnSearchSuggesstions();
+        if (searchResult.length > 0) toggleOnSearchSuggesstions();
     };
 
     const onSearch = (v: string) => {
@@ -86,12 +91,25 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         ];
         setSearchResult(product);
         setTimeout(() => {
-            setShowSearchSuggesstions(true);
+            toggleOnSearchSuggesstions();
         }, 300);
     };
     return (
         <AppContext.Provider
-            value={{ lang, isBreakpoint, isSmallScreen, searchHistory, searchResult, showSearchSuggesstions, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch, setShowSearchSuggesstions }}
+            value={{
+                lang,
+                isBreakpoint,
+                isSmallScreen,
+                searchHistory,
+                searchResult,
+                showSearchSuggesstions,
+                changeLanguage,
+                useOutSideClick,
+                searchInputOnFocus,
+                onSearch,
+                toggleOnSearchSuggesstions,
+                hideSearchSuggesstions,
+            }}
         >
             {children}
         </AppContext.Provider>

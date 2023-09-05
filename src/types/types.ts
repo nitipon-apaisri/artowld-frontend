@@ -43,7 +43,8 @@ interface AppContextType {
     changeLanguage: (lang: string) => void;
     useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;
     searchInputOnFocus: () => void;
-    setShowSearchSuggesstions: (value: boolean) => void;
+    toggleOnSearchSuggesstions: () => void;
+    hideSearchSuggesstions: () => void;
     onSearch: (value: string) => void;
 }
 interface UserType {
