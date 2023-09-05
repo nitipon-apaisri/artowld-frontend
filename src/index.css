@@ -155,7 +155,10 @@ input:focus {
     @apply text-3xl font-bold mt-20;
 }
 .search_suggestions_wrapper {
-    @apply absolute  left-0 w-full bg-white rounded-lg border border-slate-200;
+    @apply absolute  left-0 w-full bg-white rounded-lg border border-slate-200 p-4;
+}
+.search_suggestions_wrapper ul {
+    @apply flex flex-col space-y-4;
 }
 @keyframes rotation {
     0% {

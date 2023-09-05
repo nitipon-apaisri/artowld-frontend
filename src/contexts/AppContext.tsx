@@ -14,6 +14,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [showSearchSuggesstions, setShowSearchSuggesstions] = useState<boolean>(false);
     const [searchHistory, setSearchHistory] = useState<object[]>([]);
     const [searchResult, setSearchResult] = useState<productCardProps[]>([]);
+
     useEffect(() => {
         const lang = localStorage.getItem("lang");
         if (lang) {
@@ -62,6 +63,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
 
     const searchInputOnFocus = () => {
         if (searchHistory.length > 0) setShowSearchSuggesstions(true);
+        if (searchResult.length > 0) setShowSearchSuggesstions(true);
     };
 
     const onSearch = (v: string) => {
@@ -74,11 +76,23 @@ const AppContxtProvider = ({ children }: contextChildren) => {
                     price: 0,
                 },
             },
+            {
+                product: {
+                    creator: "Lorem Ipsum",
+                    title: "product 2",
+                    price: 0,
+                },
+            },
         ];
         setSearchResult(product);
+        setTimeout(() => {
+            setShowSearchSuggesstions(true);
+        }, 300);
     };
     return (
-        <AppContext.Provider value={{ lang, isBreakpoint, isSmallScreen, searchHistory, searchResult, showSearchSuggesstions, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch }}>
+        <AppContext.Provider
+            value={{ lang, isBreakpoint, isSmallScreen, searchHistory, searchResult, showSearchSuggesstions, changeLanguage, useOutSideClick, searchInputOnFocus, onSearch, setShowSearchSuggesstions }}
+        >
             {children}
         </AppContext.Provider>
     );
