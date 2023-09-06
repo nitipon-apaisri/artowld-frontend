@@ -130,7 +130,7 @@ const Profile = () => {
                             ) : (
                                 <div className="product_grid">
                                     {products.map((product: productCardProps, index: number) => (
-                                        <ProductCard product={product.product} key={index} />
+                                        <ProductCard creator={product.creator} title={product.title} price={product.price} key={index} />
                                     ))}
                                 </div>
                             )}

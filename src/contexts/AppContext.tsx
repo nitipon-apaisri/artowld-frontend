@@ -1,6 +1,7 @@
 import { RefObject, createContext, useEffect, useState } from "react";
 import { AppContextType, contextChildren, productCardProps } from "../types/types";
 import { useTranslation } from "react-i18next";
+import { sampleCollectedProducts } from "../data/sample";
 
 const AppContext = createContext<AppContextType | null>(null);
 const AppContxtProvider = ({ children }: contextChildren) => {
@@ -72,24 +73,14 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     };
 
     const onSearch = (v: string) => {
-        console.log(v);
-        const product = [
-            {
-                product: {
-                    creator: "Lorem Ipsum",
-                    title: "product 1",
-                    price: 0,
-                },
-            },
-            {
-                product: {
-                    creator: "Lorem Ipsum",
-                    title: "product 2",
-                    price: 0,
-                },
-            },
-        ];
-        setSearchResult(product);
+        const products = sampleCollectedProducts.filter((product: productCardProps) => {
+            const byCreator = product.creator?.toLocaleLowerCase();
+            const byTitle = product.title?.toLocaleLowerCase();
+            return byCreator?.includes(v.toLocaleLowerCase()) || byTitle?.includes(v.toLocaleLowerCase());
+        });
+
+        console.log(products);
+        setSearchResult(products);
         setTimeout(() => {
             toggleOnSearchSuggesstions();
         }, 300);

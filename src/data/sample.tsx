@@ -50,84 +50,62 @@ const sampleCreators = [
 
 const sampleProducts: productCardProps[] = [
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 1",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 1",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 2",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 2",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 3",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 3",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 4",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 4",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 5",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 5",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 6",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 6",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 7",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 7",
+        price: 0,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 8",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "product 8",
+        price: 0,
     },
 ];
 
 const sampleCollectedProducts: productCardProps[] = [
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 1",
-            price: 0,
-        },
+        creator: "Lorem Ipsum",
+        title: "Product 3",
+        price: 10,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 2",
-            price: 0,
-        },
+        creator: "Ipsum",
+        title: "Lorem",
+        price: 20,
     },
     {
-        product: {
-            creator: "Lorem Ipsum",
-            title: "product 3",
-            price: 0,
-        },
+        creator: "John Doe",
+        title: "Product ABC",
+        price: 15,
     },
 ];
 

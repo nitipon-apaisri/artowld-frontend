@@ -23,7 +23,7 @@ const Marketplace = () => {
                     ) : (
                         <div className="product_grid">
                             {sampleCollectedProducts.map((product: productCardProps, index: number) => (
-                                <ProductCard product={product.product} key={index} />
+                                <ProductCard creator={product.creator} title={product.title} price={product.price} key={index} />
                             ))}
                         </div>
                     )}

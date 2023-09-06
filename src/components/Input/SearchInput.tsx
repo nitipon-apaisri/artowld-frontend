@@ -12,7 +12,6 @@ const SearchInput = () => {
     useOutSideClick(wrapperRef);
     const onTypeSearch = (value: string) => {
         if (value.length < 3) hideSearchSuggesstions();
-        setSearchQuery(value);
         if (value.length < 3) return;
         if (timer) clearTimeout(timer);
         setTimer(
@@ -20,6 +19,7 @@ const SearchInput = () => {
                 onSearch(value);
             }, 1000)
         );
+        setSearchQuery(value);
     };
     const onFocus = () => {
         if (searchQuery.length >= 3) searchInputOnFocus();
