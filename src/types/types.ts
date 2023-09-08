@@ -38,7 +38,8 @@ interface AppContextType {
     isBreakpoint: boolean;
     isSmallScreen: boolean;
     searchHistory: object[];
-    searchResult: productCardProps[];
+    searchResultProducts: productCardProps[];
+    searchResultUsers: productCardProps[];
     showSearchSuggesstions: boolean;
     changeLanguage: (lang: string) => void;
     useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;

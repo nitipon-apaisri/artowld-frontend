@@ -704,21 +704,17 @@ video {
   height: 4rem;
 }
 
-.h-24{
-  height: 6rem;
-}
-
 .h-\[50\%\]{
   height: 50%;
-}
-
-.h-full{
-  height: 100%;
 }
 
 .h-fit{
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-full{
+  height: 100%;
 }
 
 .max-h-20{
@@ -1222,12 +1218,12 @@ video {
   transition-duration: 150ms;
 }
 
-.duration-500{
-  transition-duration: 500ms;
-}
-
 .duration-300{
   transition-duration: 300ms;
+}
+
+.duration-500{
+  transition-duration: 500ms;
 }
 
 .ease-in-out{
@@ -1236,10 +1232,6 @@ video {
 
 .ease-out{
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
-.ease-linear{
-  transition-timing-function: linear;
 }
 
 @layer components responsive {
@@ -1661,15 +1653,24 @@ input:focus{
   padding: 1rem;
 }
 
+.search_suggestions_list{
+  display: flex;
+  flex-direction: column;
+}
+
+.search_suggestions_list > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
 .search_suggestions_wrapper ul{
   display: flex;
   flex-direction: column;
 }
 
-.search_suggestions_wrapper ul > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+.search_suggestions_wrapper label{
+  font-weight: 700;
 }
 
 @keyframes rotation {

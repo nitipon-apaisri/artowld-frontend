@@ -157,8 +157,14 @@ input:focus {
 .search_suggestions_wrapper {
     @apply absolute  left-0 w-full bg-white rounded-lg border border-slate-200 p-4;
 }
+.search_suggestions_list {
+    @apply flex flex-col space-y-2;
+}
 .search_suggestions_wrapper ul {
-    @apply flex flex-col space-y-4;
+    @apply flex flex-col;
+}
+.search_suggestions_wrapper label {
+    @apply font-bold;
 }
 @keyframes rotation {
     0% {

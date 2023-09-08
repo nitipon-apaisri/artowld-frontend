@@ -14,7 +14,8 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
     const [showSearchSuggesstions, setShowSearchSuggesstions] = useState<boolean>(false);
     const [searchHistory, setSearchHistory] = useState<object[]>([]);
-    const [searchResult, setSearchResult] = useState<productCardProps[]>([]);
+    const [searchResultProducts, setSearchResultProducts] = useState<productCardProps[]>([]);
+    const [searchResultUsers, setSearchResultUsers] = useState<productCardProps[]>([]);
 
     useEffect(() => {
         const lang = localStorage.getItem("lang");
@@ -69,18 +70,20 @@ const AppContxtProvider = ({ children }: contextChildren) => {
 
     const searchInputOnFocus = () => {
         if (searchHistory.length > 0) toggleOnSearchSuggesstions();
-        if (searchResult.length > 0) toggleOnSearchSuggesstions();
+        if (searchResultProducts.length > 0 || searchResultUsers.length > 0) toggleOnSearchSuggesstions();
     };
 
     const onSearch = (v: string) => {
-        const products = sampleCollectedProducts.filter((product: productCardProps) => {
+        const creators = sampleCollectedProducts.filter((product: productCardProps) => {
             const byCreator = product.creator?.toLocaleLowerCase();
-            const byTitle = product.title?.toLocaleLowerCase();
-            return byCreator?.includes(v.toLocaleLowerCase()) || byTitle?.includes(v.toLocaleLowerCase());
+            return byCreator?.includes(v.toLocaleLowerCase());
         });
-
-        console.log(products);
-        setSearchResult(products);
+        const products = sampleCollectedProducts.filter((product: productCardProps) => {
+            const byTitle = product.title?.toLocaleLowerCase();
+            return byTitle?.includes(v.toLocaleLowerCase());
+        });
+        setSearchResultProducts(products);
+        setSearchResultUsers(creators);
         setTimeout(() => {
             toggleOnSearchSuggesstions();
         }, 300);
@@ -92,7 +95,8 @@ const AppContxtProvider = ({ children }: contextChildren) => {
                 isBreakpoint,
                 isSmallScreen,
                 searchHistory,
-                searchResult,
+                searchResultProducts,
+                searchResultUsers,
                 showSearchSuggesstions,
                 changeLanguage,
                 useOutSideClick,
