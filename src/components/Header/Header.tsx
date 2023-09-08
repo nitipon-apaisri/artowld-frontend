@@ -34,7 +34,7 @@ const Header = () => {
                 {/* {isSmallScreen ? <SearchButton /> : <SearchInput />} */}
                 <SearchInput />
                 {/* <div className="relative w-full">
-                    <SearchSuggesstion />
+                    <Searchsuggest />
                 </div> */}
                 {!isBreakpoint && <Navigation />}
             </div>

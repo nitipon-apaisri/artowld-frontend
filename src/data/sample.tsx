@@ -94,12 +94,32 @@ const sampleProducts: productCardProps[] = [
 const sampleCollectedProducts: productCardProps[] = [
     {
         creator: "Lorem Ipsum",
+        title: "Product 1",
+        price: 10,
+    },
+    {
+        creator: "Lorem Ipsum",
+        title: "Product 2",
+        price: 10,
+    },
+    {
+        creator: "Lorem Ipsum",
         title: "Product 3",
+        price: 10,
+    },
+    {
+        creator: "Lorem Ipsum",
+        title: "Product 4",
         price: 10,
     },
     {
         creator: "Ipsum",
         title: "Lorem",
+        price: 20,
+    },
+    {
+        creator: "XXX",
+        title: "Lorem 2",
         price: 20,
     },
     {

@@ -40,12 +40,12 @@ interface AppContextType {
     searchHistory: object[];
     searchResultProducts: productCardProps[];
     searchResultUsers: productCardProps[];
-    showSearchSuggesstions: boolean;
+    showSearchsuggests: boolean;
     changeLanguage: (lang: string) => void;
     useOutSideClick: (ref: RefObject<HTMLDivElement>) => void;
     searchInputOnFocus: () => void;
-    toggleOnSearchSuggesstions: () => void;
-    hideSearchSuggesstions: () => void;
+    toggleOnSearchsuggests: () => void;
+    hideSearchsuggests: () => void;
     onSearch: (value: string) => void;
 }
 interface UserType {

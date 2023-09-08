@@ -2,6 +2,7 @@ import { RefObject, createContext, useEffect, useState } from "react";
 import { AppContextType, contextChildren, productCardProps } from "../types/types";
 import { useTranslation } from "react-i18next";
 import { sampleCollectedProducts } from "../data/sample";
+import removeDuplicate from "../utils/removeDuplicate";
 
 const AppContext = createContext<AppContextType | null>(null);
 const AppContxtProvider = ({ children }: contextChildren) => {
@@ -12,7 +13,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
     const [isBreakpoint, setIsBreakpoint] = useState<boolean>(false);
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
-    const [showSearchSuggesstions, setShowSearchSuggesstions] = useState<boolean>(false);
+    const [showSearchsuggests, setShowSearchsuggests] = useState<boolean>(false);
     const [searchHistory, setSearchHistory] = useState<object[]>([]);
     const [searchResultProducts, setSearchResultProducts] = useState<productCardProps[]>([]);
     const [searchResultUsers, setSearchResultUsers] = useState<productCardProps[]>([]);
@@ -26,7 +27,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         const searchHistoryData = localStorage.getItem("searchHistory");
         if (searchHistoryData) {
             setSearchHistory(JSON.parse(searchHistoryData));
-            toggleOnSearchSuggesstions();
+            toggleOnSearchsuggests();
         }
     }, [i18n]);
 
@@ -41,11 +42,11 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         if (innerWidth < smallScreen) setIsSmallScreen(true);
         else setIsSmallScreen(false);
     }, [innerWidth]);
-    const toggleOnSearchSuggesstions = () => {
-        setShowSearchSuggesstions(true);
+    const toggleOnSearchsuggests = () => {
+        setShowSearchsuggests(true);
     };
-    const hideSearchSuggesstions = () => {
-        setShowSearchSuggesstions(false);
+    const hideSearchsuggests = () => {
+        setShowSearchsuggests(false);
     };
     const changeLanguage = (lang: string) => {
         localStorage.setItem("lang", lang);
@@ -58,7 +59,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
-                    hideSearchSuggesstions();
+                    hideSearchsuggests();
                 }
             };
             document.addEventListener("mousedown", handleClickOutside);
@@ -69,8 +70,8 @@ const AppContxtProvider = ({ children }: contextChildren) => {
     };
 
     const searchInputOnFocus = () => {
-        if (searchHistory.length > 0) toggleOnSearchSuggesstions();
-        if (searchResultProducts.length > 0 || searchResultUsers.length > 0) toggleOnSearchSuggesstions();
+        if (searchHistory.length > 0) toggleOnSearchsuggests();
+        if (searchResultProducts.length > 0 || searchResultUsers.length > 0) toggleOnSearchsuggests();
     };
 
     const onSearch = (v: string) => {
@@ -82,10 +83,12 @@ const AppContxtProvider = ({ children }: contextChildren) => {
             const byTitle = product.title?.toLocaleLowerCase();
             return byTitle?.includes(v.toLocaleLowerCase());
         });
-        setSearchResultProducts(products);
-        setSearchResultUsers(creators);
+        const removeDuplicateCreator = removeDuplicate(creators as never, "creator");
+        const removeDuplicateProduct = removeDuplicate(products as never, "title");
+        setSearchResultProducts(removeDuplicateProduct);
+        setSearchResultUsers(removeDuplicateCreator);
         setTimeout(() => {
-            toggleOnSearchSuggesstions();
+            toggleOnSearchsuggests();
         }, 300);
     };
     return (
@@ -97,13 +100,13 @@ const AppContxtProvider = ({ children }: contextChildren) => {
                 searchHistory,
                 searchResultProducts,
                 searchResultUsers,
-                showSearchSuggesstions,
+                showSearchsuggests,
                 changeLanguage,
                 useOutSideClick,
                 searchInputOnFocus,
                 onSearch,
-                toggleOnSearchSuggesstions,
-                hideSearchSuggesstions,
+                toggleOnSearchsuggests,
+                hideSearchsuggests,
             }}
         >
             {children}
