@@ -175,6 +175,12 @@ input:focus {
 .search_suggestions_item .suggest_img {
     @apply w-8 aspect-square bg-slate-300 rounded-md;
 }
+.page_not_found {
+    @apply relative h-full;
+}
+/* .page_not_found img {
+    @apply max-w-lg mx-auto aspect-square absolute -translate-x-1/2 translate-y-1/2 left-1/2 top-1/2;
+} */
 @keyframes rotation {
     0% {
         transform: rotate(0deg);

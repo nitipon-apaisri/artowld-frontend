@@ -556,6 +556,10 @@ video {
   bottom: 1rem;
 }
 
+.left-1\/2{
+  left: 50%;
+}
+
 .left-2\/4{
   left: 50%;
 }
@@ -566,6 +570,10 @@ video {
 
 .top-0{
   top: 0px;
+}
+
+.top-1\/2{
+  top: 50%;
 }
 
 .top-12{
@@ -622,10 +630,6 @@ video {
 
 .-mr-\[50\%\]{
   margin-right: -50%;
-}
-
-.mb-1{
-  margin-bottom: 0.25rem;
 }
 
 .mb-2{
@@ -773,6 +777,10 @@ video {
   width: 100%;
 }
 
+.w-96{
+  width: 24rem;
+}
+
 .min-w-\[40px\]{
   min-width: 40px;
 }
@@ -783,6 +791,10 @@ video {
 
 .max-w-full{
   max-width: 100%;
+}
+
+.max-w-lg{
+  max-width: 32rem;
 }
 
 .-translate-x-0{
@@ -812,6 +824,11 @@ video {
 
 .translate-x-0{
   --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-1\/2{
+  --tw-translate-y: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -871,12 +888,6 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
@@ -1187,6 +1198,10 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
 }
 
 .antialiased{
@@ -1715,6 +1730,15 @@ input:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
+
+.page_not_found{
+  position: relative;
+  height: 100%;
+}
+
+/* .page_not_found img {
+    @apply max-w-lg mx-auto aspect-square absolute -translate-x-1/2 translate-y-1/2 left-1/2 top-1/2;
+} */
 
 @keyframes rotation {
   0% {

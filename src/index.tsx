@@ -13,8 +13,10 @@ import { RouterType } from "./types/types.ts";
 import Profile from "./views/Profile.tsx";
 import RequireAuth from "./middleware/auth.tsx";
 import Marketplace from "./views/Marketplace.tsx";
+import PageNotFound from "./views/PageNotFound.tsx";
 
 const routers: RouterType[] = [
+    { path: "*", element: <PageNotFound /> },
     { path: "/", element: <LandingPage /> },
     { path: "/user/registration", element: <UserRegisteration /> },
     { path: "/user/profile/created", element: <Profile /> },
