@@ -47,6 +47,7 @@ interface AppContextType {
     toggleOnSearchsuggests: () => void;
     hideSearchsuggests: () => void;
     onSearch: (value: string) => void;
+    clearSearchResult: () => void;
 }
 interface UserType {
     id?: string;

@@ -54,7 +54,11 @@ const AppContxtProvider = ({ children }: contextChildren) => {
         setLang(lang);
         window.location.reload();
     };
-
+    const clearSearchResult = () => {
+        setSearchResultProducts([]);
+        setSearchResultUsers([]);
+        setShowSearchsuggests(false);
+    };
     const useOutSideClick = (ref: RefObject<HTMLDivElement>) => {
         useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
@@ -107,6 +111,7 @@ const AppContxtProvider = ({ children }: contextChildren) => {
                 onSearch,
                 toggleOnSearchsuggests,
                 hideSearchsuggests,
+                clearSearchResult,
             }}
         >
             {children}
