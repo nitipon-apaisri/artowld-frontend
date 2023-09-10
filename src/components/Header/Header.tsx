@@ -28,8 +28,12 @@ const Header = () => {
             <div className={`app_header flex flex-row px-10 py-8 justify-between bg-white fixed w-full z-50 top-0 space-x-4`}>
                 <div className="logo flex flex-row items-center space-x-4">
                     {isBreakpoint && <FontAwesomeIcon icon={isSidebarToggle ? faXmark : faBars} className={`cursor-pointer min-w-[40px]`} size="2xl" onClick={() => toggleSidebar()} />}
-                    <img src={logo} alt="App-logo" />
-                    {!isBreakpoint && <h1 className="font-bold tracking-wider">ARTOWLD</h1>}
+                    <a href="/">
+                        <div className="flex flex-row items-center space-x-4">
+                            <img src={logo} alt="App-logo" />
+                            {!isBreakpoint && <h1 className="font-bold tracking-wider">ARTOWLD</h1>}
+                        </div>
+                    </a>
                 </div>
                 {/* {isSmallScreen ? <SearchButton /> : <SearchInput />} */}
                 <SearchInput />
