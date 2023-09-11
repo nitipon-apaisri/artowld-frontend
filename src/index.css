@@ -140,7 +140,7 @@ input:focus {
     @apply max-[1366px]:mt-10;
 }
 .user_profile_image {
-    @apply w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] outline-white;
+    @apply w-60 max-[1366px]:w-40 rounded-full  mx-auto aspect-square bg-slate-500 outline outline-[10px] shadow-custom outline-white;
 }
 .product_grid {
     @apply w-full grid grid-cols-5 grid-flow-row gap-6 hide_scrollbar mt-10;
